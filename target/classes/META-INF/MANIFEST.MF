@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: blog
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: namiq
+Implementation-Vendor-Id: com.myproject
+Build-Jdk: 1.8.0_151
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/blog
+Created-By: Maven Integration for Eclipse
+
