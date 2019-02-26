@@ -1,0 +1,29 @@
+@charset "ISO-8859-1";
+
+.responsive {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.text2 {
+	text-align: justify;
+	text-indent: .5in;
+	color: #3d3d3d;
+}
+
+.math {
+
+	text-align: center;
+	font-size: 16px;
+	font-style: italic;
+	color: #3d3d3d;
+}
+
+.text_header {
+	font-weight: bold;
+	font-size: 16px;
+	text-indent: .5in;
+	color: #3d3d3d;
+}
+
+
