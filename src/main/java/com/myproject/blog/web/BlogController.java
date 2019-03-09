@@ -15,85 +15,96 @@ import com.myproject.blog.service.BlogService;
  */
 @Controller
 public class BlogController {
-	
-	@Autowired // Spring Container bootstrap vaxtı BlogService tipindəki bean-i  Controller beani-nə enject edir
+
+	@Autowired // Spring Container bootstrap vaxtı BlogService tipindəki bean-i Controller
+				// beani-nə enject edir
 	private BlogService blogService;
-	
-	@RequestMapping("/users") // sayt.com/users tipli request gəldikdə Spring bu requestin getUsers methodu tərəfindən handle edilməsini  təmin edir
-	public ModelAndView getUsers(){
+
+	@RequestMapping("/users") // sayt.com/users tipli request gəldikdə Spring bu requestin getUsers methodu
+								// tərəfindən handle edilməsini təmin edir
+	public ModelAndView getUsers() {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("users", blogService.findUsers() ); // mav içinə findUsers() methodundan qayıdan user listini 'users' keywordu ilə set edirik
+		mav.addObject("users", blogService.findUsers()); // mav içinə findUsers() methodundan qayıdan user listini
+															// 'users' keywordu ilə set edirik
 		mav.setViewName("users");
 		return mav;
 	}
-	
-	
+
+	@RequestMapping("/articles")
+	public ModelAndView getArticles() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("articles", blogService.findArticles());
+		mav.setViewName("articles");
+		return mav;
+
+	}
+
 	@RequestMapping("/")
 	public ModelAndView homePage() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("index");
+		mav.setViewName("index"	);
 		return mav;
 	}
-	
+
 	@RequestMapping("/photography")
 	public ModelAndView photography() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("photography");
 		return mav;
 	}
-	
+
 	@RequestMapping("/travel")
 	public ModelAndView travel() {
 		ModelAndView mov = new ModelAndView();
 		mov.setViewName("travel");
 		return mov;
 	}
-	
+
 	@RequestMapping("/fashion")
 	public ModelAndView fashion() {
 		ModelAndView mov = new ModelAndView();
 		mov.setViewName("fashion");
 		return mov;
 	}
-	
+
 	@RequestMapping("/books")
 	public ModelAndView books() {
 		ModelAndView mov = new ModelAndView();
 		mov.setViewName("books");
 		return mov;
 	}
-	
+
 	@RequestMapping("/running")
 	public ModelAndView running() {
 		ModelAndView mov = new ModelAndView();
 		mov.setViewName("running");
 		return mov;
 	}
-	
+
 	@RequestMapping("/about")
 	public ModelAndView about() {
 		ModelAndView mov = new ModelAndView();
 		mov.setViewName("about");
 		return mov;
 	}
-	
+
 	@RequestMapping("/contact")
 	public ModelAndView contact() {
 		ModelAndView mov = new ModelAndView();
 		mov.setViewName("contact");
 		return mov;
 	}
-	
+
 	@RequestMapping("/rsa")
 	public ModelAndView rsa() {
 		ModelAndView mov = new ModelAndView();
-		mov.setViewName("rsa");
+		mov.setViewName("cs/rsa");
 		return mov;
 	}
-	
-	
+
 	@RequestMapping("/test") // RequestMapping gələn web requestlərini uyğun handler methoda yönəldir
-	@ResponseBody // responseBody annotasiyası methodunun qayıtdığı String ifadənin responsun body-si olduğunu göstərir	
+	@ResponseBody // responseBody annotasiyası methodunun qayıtdığı String ifadənin responsun
+					// body-si olduğunu göstərir
 	public String welcome() {
 		return "Welcome to my Blog!";
 	}

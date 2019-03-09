@@ -1,0 +1,21 @@
+@charset "ISO-8859-1";
+
+div.example {
+	padding: 20px;
+	font-weight: bold;
+}
+
+@media screen and (min-width: 601px) {
+	div.example {
+		font-size: 40px;
+		padding-bottom: 650px
+	}
+}
+
+@media screen and (max-width: 600px) {
+	div.example {
+		font-size: 20px;
+		padding-bottom: 650px;
+		color: black;
+	}
+}

@@ -10,7 +10,5 @@ public interface UserRepository {
 	List<User> findByLastName(String lastName); // LastName-ə uyğun User-ləri qaytarır
 	void create(User user); // input arg olaraq User obyekti alır, heçnə qaytarmır
 	User update(User user); // input arg olaraq User obyekti alır, Update olan user-ı qaytarır
- 	void delete(Long id); // input arg olaraq silinəcək User obyektinin id-sini alır, heçnə qaytarmır
-	
-	
+ 	void delete(Long id); // input arg olaraq silinəcək User obyektinin id-sini alır, heçnə qaytarmır	
 }

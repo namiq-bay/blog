@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-<title>Elen - Free Bootstrap 4 Template by Colorlib</title>
+<title>bloqum</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -45,16 +45,15 @@
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
 					<li class="colorlib-active"><a href="/">Home</a></li>
-					<li><a href="photography">Photography</a></li>
 					<li><a href="cs">Computer Sciences</a></li>
-					<li><a href="books">Books</a></li>
 					<li><a href="running">Running</a></li>
+					<li><a href="books">Books</a></li>
 					<li><a href="about">About</a></li>
 					<li><a href="contact">Contact</a></li>
-					
-					<li style="color: black "><a href="login">Login</a></li>
-					
-					
+
+					<li style="color: black"><a href="login">Login</a></li>
+
+
 				</ul>
 			</nav>
 
@@ -74,6 +73,7 @@
 				</ul>
 			</div>
 		</aside>
+
 		<!-- END COLORLIB-ASIDE -->
 		<div id="colorlib-main">
 			<div class="hero-wrap js-fullheight"
@@ -88,10 +88,10 @@
 						<div class="desc">
 							<h2 class="subheading">Hello I'm</h2>
 							<h1 class="mb-4">Namiq Bayramov</h1>
-							<p class="mb-4">I am A Blogger Far far away, behind the word
-								mountains, far from the countries Vokalia and Consonantia, there
-								live the blind texts. Separated they live in Bookmarksgrove
-								right at the coast of the Semantics, a large language ocean.</p>
+							<p class="mb-4">I'm a computer sciences student at Azerbaijan
+								Technical University. I'm also a marathon runner and bookworm.
+								In this blog, I will share everything that is trapped in the
+								cells of my brain and is dying to go out.</p>
 							<p>
 								<a href="#" class="btn-custom">More About Me <span
 									class="ion-ios-arrow-forward"></span></a>
@@ -111,24 +111,87 @@
 						</div>
 					</div>
 					<div class="row">
+
+
+						<th:block th:each="article:${articles}">
+							<!-- start -->
+							<div class="col-md-4">
+								<div class="blog-entry ftco-animate">
+
+									<a href="/rsa" class="img img-2"
+										style="background-image: url(images/image_1.jpg);"></a> 
+										
+										
+										<a th:href="${article.url}" class="img img-2" style="background-image: url(images/${article.imageUrl});"></a>
+
+
+									<div class="text text-2 pt-2 mt-3">
+										<span class="category mb-3 d-block"><a href="#">Computer
+												Sciences</a></span>
+										<h3 class="mb-4">
+											<a href="/rsa">RSA - Açıq açarlı kriptosistem</a>
+										</h3>
+										<p class="mb-4">Rsa alqoritminin iş prinsipləri. Şifrələmə
+											və deşifrələmə üsulları.</p>
+										<div class="author mb-4 d-flex align-items-center">
+											<a href="" class="img"
+												style="background-image: url(images/author_n.jpeg);"></a>
+											<div class="ml-3 info">
+												<span>Written by</span>
+												<h3>
+													<a href="#">Namiq Bay</a>, <span>Feb. 26. 2019</span>
+												</h3>
+											</div>
+										</div>
+										<div class="meta-wrap align-items-center">
+											<div class="half order-md-last">
+												<p class="meta">
+													<span><i class="icon-heart"></i>3</span> <span><i
+														class="icon-eye"></i>100</span> <span><i
+														class="icon-comment"></i>5</span>
+												</p>
+											</div>
+											<div class="half">
+												<p>
+													<a href="/rsa" class="btn py-2">Continue Reading <span
+														class="ion-ios-arrow-forward"></span></a>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- end -->
+
+
+
+
+						</th:block>
+
+
+
+
+
+						<!-- start -->
 						<div class="col-md-4">
 							<div class="blog-entry ftco-animate">
-								<a href="#" class="img img-2"
+								<a href="/rsa" class="img img-2"
 									style="background-image: url(images/image_1.jpg);"></a>
 								<div class="text text-2 pt-2 mt-3">
-									<span class="category mb-3 d-block"><a href="#">Technology</a></span>
+									<span class="category mb-3 d-block"><a href="#">Computer
+											Sciences</a></span>
 									<h3 class="mb-4">
-										<a href="#">The Newest Technology On This Year 2019</a>
+										<a href="/rsa">RSA - Açıq açarlı kriptosistem</a>
 									</h3>
-									<p class="mb-4">Even the all-powerful Pointing has no
-										control about the blind texts it is an almost</p>
+									<p class="mb-4">Rsa alqoritminin iş prinsipləri. Şifrələmə
+										və deşifrələmə üsulları.</p>
 									<div class="author mb-4 d-flex align-items-center">
-										<a href="#" class="img"
-											style="background-image: url(images/person_2.jpg);"></a>
+										<a href="" class="img"
+											style="background-image: url(images/author_n.jpeg);"></a>
 										<div class="ml-3 info">
 											<span>Written by</span>
 											<h3>
-												<a href="#">Dave Lewis</a>, <span>Nov. 28, 2018</span>
+												<a href="#">Namiq Bay</a>, <span>Feb. 26. 2019</span>
 											</h3>
 										</div>
 									</div>
@@ -142,7 +205,7 @@
 										</div>
 										<div class="half">
 											<p>
-												<a href="#" class="btn py-2">Continue Reading <span
+												<a href="/rsa" class="btn py-2">Continue Reading <span
 													class="ion-ios-arrow-forward"></span></a>
 											</p>
 										</div>
@@ -150,24 +213,27 @@
 								</div>
 							</div>
 						</div>
+						<!-- end -->
+
 						<div class="col-md-4">
 							<div class="blog-entry ftco-animate">
 								<a href="#" class="img img-2"
-									style="background-image: url(images/image_2.jpg);"></a>
+									style="background-image: url(images/keys.jpeg);"></a>
 								<div class="text text-2 pt-2 mt-3">
-									<span class="category mb-3 d-block"><a href="#">Travel</a></span>
+									<span class="category mb-3 d-block"><a href="/cs">Computer
+											Sciences</a></span>
 									<h3 class="mb-4">
-										<a href="#">What to pack when visiting Sea</a>
+										<a href="#">Deffi-Helman açar dəyişmə protokolu</a>
 									</h3>
 									<p class="mb-4">Even the all-powerful Pointing has no
 										control about the blind texts it is an almost</p>
 									<div class="author mb-4 d-flex align-items-center">
 										<a href="#" class="img"
-											style="background-image: url(images/person_1.jpg);"></a>
+											style="background-image: url(images/author_n.jpeg);"></a>
 										<div class="ml-3 info">
 											<span>Written by</span>
 											<h3>
-												<a href="#">Dave Lewis</a>, <span>Nov. 28, 2018</span>
+												<a href="#">Namiq Bay</a>, <span>Nov. 28, 2018</span>
 											</h3>
 										</div>
 									</div>
@@ -629,7 +695,7 @@
 						<div class="col-md-12">
 
 							<p>
-										Copyright &copy;
+								Copyright &copy;
 								<script>
 									document.write(new Date().getFullYear());
 								</script>
