@@ -18,6 +18,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+import com.myproject.blog.model.Article;
 import com.myproject.blog.model.User;
 import com.myproject.blog.service.BlogService;
 
@@ -25,6 +26,8 @@ import junit.framework.Assert;
 
 public class BlogRestControllerTest {
 	private RestTemplate restTemplate;
+	
+	
 
 	@Before // Before methodu hər test methodu işləmədən öncə işləyərək içindəki kodu excute
 			// edir
@@ -53,10 +56,19 @@ public class BlogRestControllerTest {
 		restTemplate.put("http://localhost:8080/rest/user/1", user);
 		user = restTemplate.getForObject("http://localhost:8080/rest/user/1", User.class);
 
+
 		MatcherAssert.assertThat(user.getFirstName(), Matchers.equalTo("Namiq Vaqif"));
 
 	}
 
+	
+	public void testUpdateArticleHit() {
+		Article article = restTemplate.getForObject("http://localhost:8080/rest/article/1", Article.class);
+		article.setHit(article.getHit() + 1);
+		restTemplate.put("http://localhost:8080/rest/acricle/1", article);
+		
+	}
+	
 	@Test
 	public void testCreatedUser() {
 		User user = new User();

@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -28,6 +30,9 @@ public class Article {
 
 	@Column(name = "category")
 	private String category;
+	
+	@Column(name = "about")
+	private String about;
 
 	@Column(name = "url")
 	private String url;
@@ -41,12 +46,22 @@ public class Article {
 	@Column(name = "hit")
 	private int hit;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "cre_date")
 	private Date createDate;
-
+	
+	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
+
+	public String getAbout() {
+		return about;
+	}
+
+	public void setAbout(String about) {
+		this.about = about;
+	}
 
 	public Long getId() {
 		return id;

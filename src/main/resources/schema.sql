@@ -8,6 +8,7 @@ create table public.t_articles(
 	id bigint not null,
 	article_name varchar(255),
 	category varchar(255),
+	about varchar(255),
 	url varchar(255),
 	img_url varchar(255),
 	author_img_url varchar(255),
@@ -15,6 +16,9 @@ create table public.t_articles(
 	cre_date date,
 	user_id bigint
 );
+
+
+
 
 alter table public.t_user add constraint public.constraint_1 primary key(id);
 

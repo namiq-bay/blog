@@ -18,6 +18,7 @@
 				<td>Author Image Url</td>
 				<td>Create Date</td>
 				<td>User</td>
+				<td>User</td>
 			</tr>
 		</thead>
 		<th:block th:each="article, iterStat:${articles}">
@@ -25,14 +26,13 @@
 				<td th:text="${article.id}" />
 				<td th:text="${article.articleName}" />
 				<td th:text="${article.category}" />
+				<td th:text="${article.about}" />
 				<td th:text="${article.url}" />
 				<td th:text="${article.imageUrl}" />
 				<td th:text="${article.authImageUrl}" />
 				<td th:text="${article.createDate}" />
 				<td th:text="${article.user.firstName}">
 			</tr>
-
-			<a th:href="${article.url}" class="img img-2" style="background-image: url(images/${article.imageUrl});"></a>
 
 		</th:block>
 	</table>

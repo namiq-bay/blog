@@ -42,6 +42,7 @@ public class BlogController {
 	@RequestMapping("/")
 	public ModelAndView homePage() {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("articles", blogService.findArticles());
 		mav.setViewName("index"	);
 		return mav;
 	}
@@ -99,6 +100,10 @@ public class BlogController {
 	public ModelAndView rsa() {
 		ModelAndView mov = new ModelAndView();
 		mov.setViewName("cs/rsa");
+		
+		
+		
+		
 		return mov;
 	}
 
