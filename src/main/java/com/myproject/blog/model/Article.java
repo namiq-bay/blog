@@ -1,7 +1,10 @@
 package com.myproject.blog.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -20,17 +24,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Article {
 
+	// article instances
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "blogSeqGen")
 	@SequenceGenerator(name = "blogSeqGen", sequenceName = "blog_sequence")
 	private Long id;
 
 	@Column(name = "article_name")
-	private String articleName;
+	private String title;
 
 	@Column(name = "category")
 	private String category;
-	
+
 	@Column(name = "about")
 	private String about;
 
@@ -42,19 +47,45 @@ public class Article {
 
 	@Column(name = "author_img_url")
 	private String authImageUrl;
+	
+	@Column(name="bg_img")
+	private String bgImage;
 
 	@Column(name = "hit")
-	private int hit;
+	private Long hit;
+
+	@Column(name = "article_body")
+	private String body;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "cre_date")
 	private Date createDate;
-	
-	
+
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 
+	@OneToMany(mappedBy = "article")
+	private Set<Comment> comments = new HashSet<>();
+
+	// Comment instances
+	
+	public void setBgImage(String bgImage) {
+		this.bgImage = bgImage;
+	}
+	
+	public String getBgImage() {
+		return bgImage;
+	}
+
+	public void setBody(String body) {
+		this.body = body;
+	}
+	
+	public String getBody() {
+		return body;
+	}
+	
 	public String getAbout() {
 		return about;
 	}
@@ -71,12 +102,12 @@ public class Article {
 		this.id = id;
 	}
 
-	public String getArticleName() {
-		return articleName;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setArticleName(String articleName) {
-		this.articleName = articleName;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getCategory() {
@@ -111,11 +142,11 @@ public class Article {
 		this.authImageUrl = authImageUrl;
 	}
 
-	public int getHit() {
+	public Long getHit() {
 		return hit;
 	}
 
-	public void setHit(int hit) {
+	public void setHit(Long hit) {
 		this.hit = hit;
 	}
 
@@ -137,10 +168,9 @@ public class Article {
 
 	@Override
 	public String toString() {
-		return "Article [id=" + id + ", articleName=" + articleName + ", category=" + category + ", url=" + url
+		return "Article [id=" + id + ", title=" + title + ", category=" + category + ", url=" + url
 				+ ", imageUrl=" + imageUrl + ", authImageUrl=" + authImageUrl + ", hit=" + hit + ", createDate="
 				+ createDate + ", user=" + user + "]";
 	}
-	
-	
+
 }

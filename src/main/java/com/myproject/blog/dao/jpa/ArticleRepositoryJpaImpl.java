@@ -9,15 +9,35 @@ import org.springframework.stereotype.Repository;
 
 import com.myproject.blog.dao.ArticleRepository;
 import com.myproject.blog.model.Article;
+import com.myproject.blog.model.User;
 
 @Repository("articleRepository")
 public class ArticleRepositoryJpaImpl implements ArticleRepository {
 
 	@PersistenceContext
 	private EntityManager entityManager;
-	
+
 	@Override
 	public List<Article> findAll() {
 		return entityManager.createQuery("from Article", Article.class).getResultList();
+	}
+
+	@Override
+	public Article hitById(Long id) {
+		return entityManager.find(Article.class, id);
+	}
+
+	@Override
+	public Article update(Article article) {
+		return entityManager.merge(article);
+	}
+
+	@Override
+	public Article findByUrl(String url) {
+		return entityManager
+				.createQuery("from Article where url = :url", Article.class)
+				.setParameter("url", url)
+				.getSingleResult();
+				
 	}
 }

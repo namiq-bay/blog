@@ -1,0 +1,15 @@
+.submitLink {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	font-weight: bold;
+	color: rgba(0, 0, 0, 0.4);
+}
+
+submitLink:focus {
+	color: black;
+}
+
+.col_1 {
+	color: #000000;
+}

@@ -12,7 +12,6 @@
 }
 
 .math {
-
 	text-align: center;
 	font-size: 16px;
 	font-style: italic;
@@ -26,4 +25,29 @@
 	color: #3d3d3d;
 }
 
+.container {
+	margin-top: 10px;
+}
 
+.card {
+	margin-bottom: 10px;
+}
+
+.box {
+	
+	width: 100%;
+	border: 1px solid grey;
+	padding: 5px;
+	margin-bottom: 25px;
+	font-weight: bold;
+	font-size: 14px;
+	color: grey;
+}
+
+.col_1 {
+	color: #000000;
+}
+
+.align {
+	float: right;
+}

@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.web.context.support.ServletContextParameterFactoryBean;
 
 import com.myproject.blog.dao.UserRepository;
 import com.myproject.blog.model.User;
@@ -28,8 +29,10 @@ public class UserRepositoryJpaImpl implements UserRepository {
 
 	@Override
 	public List<User> findByLastName(String lastName) {
-		return entityManager.createQuery("from User where lastName = :lastName", User.class)
-				.setParameter("lastName", lastName).getResultList();
+		return entityManager
+				.createQuery("from User where lastName = :lastName", User.class)
+				.setParameter("lastName", lastName)
+				.getResultList();
 	}
 
 	@Override
@@ -45,6 +48,12 @@ public class UserRepositoryJpaImpl implements UserRepository {
 	@Override
 	public void delete(Long id) {
 		entityManager.remove(entityManager.getReference(User.class, id));
+	}
+
+	@Override
+	public User findByUname(String username) {
+		return entityManager.createQuery("from User where username = :username", User.class)
+				.setParameter("username", username).getSingleResult();
 	}
 
 }

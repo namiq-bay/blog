@@ -19,3 +19,20 @@ div.example {
 		color: black;
 	}
 }
+
+.heder-box{
+	border: 
+}
+
+.box {	
+	width: 100%;
+	border: 1px solid grey;
+	padding: 5px;
+	margin-bottom: 25px;
+	font-weight: bold;
+	font-size: 14px;
+	color: grey;
+}
+
+
+.myImageSlides {display:none;}

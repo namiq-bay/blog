@@ -23,6 +23,7 @@
 		</thead>
 		<th:block th:each="article, iterStat:${articles}">
 			<tr th:bgcolor="${iterStat.odd} ? white:lightgray ">
+				
 				<td th:text="${article.id}" />
 				<td th:text="${article.articleName}" />
 				<td th:text="${article.category}" />
@@ -33,9 +34,42 @@
 				<td th:text="${article.createDate}" />
 				<td th:text="${article.user.firstName}">
 			</tr>
-
 		</th:block>
 	</table>
+	
+	<br>
+ 	
+	<table>
+	<thead>
+		<tr style="font-weight: bold" bgcolor="lightgreen">
+		<td>id</td>
+		<td>accept</td>
+		<td>name</td>
+		<td>email</td>
+		<td>web site</td>
+		<td>comment</td>
+		<td>Article ID</td>
+		</tr>
+	</thead>
+	<th:block th:each="comment,iterStat:${comments}">
+	<tr th:if="${comment.article.id} == 2" th:bgcolor="${iterStat.odd} ? white:lightgray ">
+	
+			<td th:text="${comment.id}" />
+			<td th:text="${comment.accept}" />
+			<td th:text="${comment.name}" />
+			<td th:text="${comment.email}" />
+			<td th:text="${comment.webSite}" />
+			<td th:text="${comment.comment}" />
+			<td th:text="${comment.article.articleName}" />
+			
+			</tr>
+	</th:block>
+	
+	
+	</table>
+
+
+
 
 
 

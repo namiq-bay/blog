@@ -75,4 +75,10 @@ public class UserRepositoryJdbcImpl implements UserRepository {
 
 	}
 
+	@Override
+	public User findByUname(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

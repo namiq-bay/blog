@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Login Page</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700"
+	rel="stylesheet">
+
+<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="css/animate.css">
+
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="css/magnific-popup.css">
+
+<link rel="stylesheet" href="css/aos.css">
+
+<link rel="stylesheet" href="css/ionicons.min.css">
+
+<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="css/jquery.timepicker.css">
+
+
+<link rel="stylesheet" href="css/flaticon.css">
+<link rel="stylesheet" href="css/icomoon.css">
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="login/images/icons/favicon.ico" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="login/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="login/vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="login/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="login/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="login/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="login/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="login/css/util.css">
+<link rel="stylesheet" type="text/css" href="login/css/main.css">
+<!--===============================================================================================-->
+
+
+<!-- MATERIAL DESIGN ICONIC FONT -->
+<link rel="stylesheet"
+	href="reg/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+<!-- STYLE CSS -->
+<link rel="stylesheet" href="reg/css/style.css">
+
+
+</head>
+<body>
+
+	<div id="colorlib-page">
+		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+		<aside id="colorlib-aside" role="complementary"
+			class="js-fullheight text-center">
+			<h1 id="colorlib-logo">
+				<a href="index.html" style="font-size: 40px">bloqum<span>.</span>tk
+				</a>
+			</h1>
+			<nav id="colorlib-main-menu" role="navigation">
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="photography">Photography</a></li>
+					<li><a href="travel">Travel</a></li>
+					<li><a href="fashion">Fashion</a></li>
+					<li><a href="about">About</a></li>
+					<li><a href="contact">Contact</a></li>
+					<li class="colorlib-active"><a href="contact">Login</a></li>
+
+				</ul>
+			</nav>
+
+			<div class="colorlib-footer">
+				Copyright &copy;
+				<script>
+					document.write(new Date().getFullYear());
+				</script>
+				<br>All rights reserved
+				<ul>
+					<li><a href="#"><i class="icon-facebook"></i></a></li>
+					<li><a href="#"><i class="icon-twitter"></i></a></li>
+					<li><a href="#"><i class="icon-instagram"></i></a></li>
+					<li><a href="#"><i class="icon-linkedin"></i></a></li>
+				</ul>
+			</div>
+		</aside>
+		<!-- END COLORLIB-ASIDE -->
+	</div>
+
+
+	<div id="colorlib-main">
+		<!-- login page -->
+
+		<div class="limiter">
+
+			<div class="container-login100"
+				style="background-image: url('login/images/bg-01.jpg');">
+				<div class="inner">
+
+					<form action="#" th:action="@{/createUser}" th:object="${user}"
+						method="post">
+						<h3>Registration Form</h3>
+						<span class="col_3" th:text="${error}" />
+						
+						<div class="form-group">
+							<input id="firstName" type="text" placeholder="First Name"
+								class="form-control" th:field="*{firstName}" required="required">
+							<input id="lastName" type="text" placeholder="Last Name"
+								class="form-control" th:field="*{lastName}" required="required">
+						</div>
+						<div class="form-wrapper">
+							<input id="usermame" type="text" placeholder="Username"
+								class="form-control" th:field="*{username}" required="required">
+							<i class="zmdi zmdi-account"></i>
+						</div>
+						<div class="form-wrapper">
+							<input id="email" type="text" placeholder="Email Address"
+								class="form-control" th:field="*{email}" required="required">
+							<i class="zmdi zmdi-email"></i>
+						</div>
+
+						<div class="form-wrapper">
+							<input id="pass" type="password" placeholder="Password"
+								class="form-control" th:field="*{password}" required="required">
+							<i class="zmdi zmdi-lock"></i>
+						</div>
+						<div class="form-wrapper">
+							<input type="password" placeholder="Confirm Password"
+								class="form-control" required="required"> <i
+								class="zmdi zmdi-lock"></i>
+						</div>
+						<button type="submit">
+							Register <i class="zmdi zmdi-arrow-right"></i>
+						</button>
+					</form>
+					
+				</div>
+			</div>
+
+			</form>
+
+		</div>
+	</div>
+	</div>
+
+
+	<div id="dropDownSelect1"></div>
+
+	<!-- login page end-->
+
+	</div>
+
+	<!-- loader -->
+	<div id="ftco-loader" class="show fullscreen">
+		<svg class="circular" width="48px" height="48px">
+			<circle class="path-bg" cx="24" cy="24" r="22" fill="none"
+				stroke-width="4" stroke="#eeeeee" />
+			<circle class="path" cx="24" cy="24" r="22" fill="none"
+				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+	</div>
+
+
+
+
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.stellar.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/aos.js"></script>
+	<script src="js/jquery.animateNumber.min.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script src="js/jquery.timepicker.min.js"></script>
+	<script src="js/scrollax.min.js"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="js/google-map.js"></script>
+	<script src="js/main.js"></script>
+
+</body>
+</html>

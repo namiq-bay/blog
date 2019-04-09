@@ -2,14 +2,23 @@ package com.myproject.blog.service;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.interceptor.SimpleKey;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.myproject.blog.dao.ArticleRepository;
+import com.myproject.blog.dao.AuthorityRepository;
+import com.myproject.blog.dao.CommentRepository;
 import com.myproject.blog.dao.UserRepository;
 import com.myproject.blog.exception.UserNotFoundException;
 import com.myproject.blog.model.Article;
+import com.myproject.blog.model.Authorities;
+import com.myproject.blog.model.Comment;
 import com.myproject.blog.model.User;
 
 @Service
@@ -21,6 +30,10 @@ public class BlogServiceImpl implements BlogService {
 	private UserRepository userRepository; // instance value
 
 	private ArticleRepository articleRepository; // instance value
+
+	private CommentRepository commentRepository; // instance value
+
+	private AuthorityRepository authorityRepository;
 
 	@Autowired
 	/*
@@ -35,6 +48,16 @@ public class BlogServiceImpl implements BlogService {
 	@Autowired
 	public void setArticleRepository(ArticleRepository articleRepository) {
 		this.articleRepository = articleRepository;
+	}
+
+	@Autowired
+	public void setCommentRepository(CommentRepository commentRepository) {
+		this.commentRepository = commentRepository;
+	}
+
+	@Autowired
+	public void setAuthorityRepository(AuthorityRepository authorityRepository) {
+		this.authorityRepository = authorityRepository;
 	}
 
 	@Override
@@ -75,5 +98,50 @@ public class BlogServiceImpl implements BlogService {
 	@Override
 	public List<Article> findArticles() {
 		return articleRepository.findAll();
+	}
+
+	@Override
+	public List<Comment> findComments() {
+		return commentRepository.findAll();
+	}
+
+	@Override
+	public void createComment(Comment comment) {
+		commentRepository.create(comment);
+
+	}
+
+	@Override
+	public Article findArticleById(Long id) {
+		Article hit = articleRepository.hitById(id);
+		return hit;
+	}
+
+	@Override
+	public void updateArticle(Article article) {
+		articleRepository.update(article);
+	}
+
+	@Override
+	public User findUserByUname(String username) throws NoResultException {
+		User user = userRepository.findByUname(username);
+		if (user == null)
+			throw new NoResultException("User not found with id: " + username);
+		return user;
+
+	}
+
+	@Override
+	public void createAuthority(Authorities authorities) {
+		authorityRepository.create(authorities);
+	}
+
+	@Override
+	public Article findArticleByUrl(String url) {
+		Article article = articleRepository.findByUrl(url);
+
+		if (article == null)
+			throw new NoResultException("Article not found with url: " + url);
+		return article;
 	}
 }

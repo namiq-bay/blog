@@ -31,6 +31,11 @@
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/icomoon.css">
 <link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="css/index.css">
+
+<link rel="stylesheet" href="css/searchBar.css">
+
 </head>
 <body>
 
@@ -39,20 +44,32 @@
 		<aside id="colorlib-aside" role="complementary"
 			class="js-fullheight text-center">
 			<h1 id="colorlib-logo">
-				<a href="index.html">bloqum<span>.</span>tk
+				<a href="/">bloqum<span>.</span>tk
 				</a>
 			</h1>
+
+
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
+					<li><span th:if="${user?.firstName != null}">
+							<div class="col_1" th:text="${'Welcome '+user?.firstName}"></div>
+					</span></li>
 					<li class="colorlib-active"><a href="/">Home</a></li>
 					<li><a href="cs">Computer Sciences</a></li>
-					<li><a href="running">Running</a></li>
-					<li><a href="books">Books</a></li>
 					<li><a href="about">About</a></li>
 					<li><a href="contact">Contact</a></li>
 
-					<li style="color: black"><a href="login">Login</a></li>
+					<span th:if="${user?.firstName == null}">
+						<li><a href="login">Log in</a></li>
+					</span>
 
+					<li><span th:if="${user?.firstName != null}">
+							<form th:action="@{/logout}" method="POST">
+								<input type="submit" class="submitLink" value="Logout">
+								<input type="hidden" name="${_csrf.parameterName}"
+									value="_csrf.token">
+							</form>
+					</span></li>
 
 				</ul>
 			</nav>
@@ -96,6 +113,7 @@
 								<a href="#" class="btn-custom">More About Me <span
 									class="ion-ios-arrow-forward"></span></a>
 							</p>
+
 						</div>
 					</div>
 				</div>
@@ -105,9 +123,14 @@
 					<div class="row justify-content-center mb-5 pb-2">
 						<div class="col-md-7 heading-section text-center ftco-animate">
 							<h2 class="mb-4">Articles</h2>
-							<p>A small river named Duden flows by their place and
-								supplies it with the necessary regelialia. It is a paradisematic
-								country.</p>
+
+							<!-- Search Bar -->
+							<form action="#" th:action="@{/searchArticle}"
+								th:object="${searchTerm}" method="POST">
+
+								<input type="text" id="searchTerm" name="searchTerm"
+									placeholder="Search Articles.."> 
+							</form>
 						</div>
 					</div>
 					<div class="row">
@@ -117,14 +140,14 @@
 						<th:block th:each="article:${articles}">
 							<div class="col-md-4">
 								<div class="blog-entry ftco-animate">
-									<a th:href="${article.url}" class="img img-2"
+									<a th:href="'articles/'+${article.url}" class="img img-2"
 										th:style="'background-image: url(/images/' + ${article.imageUrl} + ');'"></a>
 									<div class="text text-2 pt-2 mt-3">
 										<span class="category mb-3 d-block"><a href="#"><td
-												th:text="${article.category}" /></a></span>
+												th:text="${article.category}" /> </a></span>
 										<h3 class="mb-4">
-											<a th:href="${article.url}"><td
-												th:text="${article.articleName}" /></a>
+											<a th:href="'articles/'+${article.url}"><td
+												th:text="${article.title}" /></a>
 										</h3>
 										<p class="mb-4">
 											<td th:text="${article.about}" />
@@ -137,7 +160,7 @@
 												<h3>
 													<a th:href="@{/}"><td
 														th:text="${article.user.firstName}"></a>, <span><td
-														th:text="${article.createDate}" /></span>
+														th:text="${#dates.day(article.createDate) +' '+ #dates.monthNameShort(article.createDate)+' '+#dates.year(article.createDate)}" /></span>
 												</h3>
 											</div>
 										</div>
@@ -152,7 +175,7 @@
 											</div>
 											<div class="half">
 												<p>
-													<a th:href="${article.url}" class="btn py-2">Continue
+													<a th:href="'articles/'+${article.url}" class="btn py-2">Continue
 														Reading <span class="ion-ios-arrow-forward"></span>
 													</a>
 												</p>
@@ -162,7 +185,7 @@
 								</div>
 							</div>
 						</th:block>
-						
+
 						<!--article end -->
 					</div>
 				</div>
