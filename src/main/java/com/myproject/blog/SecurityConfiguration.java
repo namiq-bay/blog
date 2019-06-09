@@ -35,17 +35,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				"/reg",
 				"/createUser",
 				"/articles/**",
+				"/p/**",
+				"/update/**",
 				"/")
 				.permitAll()
+			.antMatchers("/pub/**").permitAll()
 			.and()
 				.authorizeRequests().antMatchers("/rest/**").access("hasRole('EDITOR')")
 			.and()
 				.authorizeRequests().antMatchers("/actuator/**").access("hasRole('ADMIN')")
                 .anyRequest().authenticated()
             .and()
+            	.authorizeRequests().antMatchers("/editor").access("hasRole('ADMIN')")
+            .and()
             .formLogin()
-                .loginPage("/login")
-                .permitAll()
+            	.loginPage("/login")
+            	.loginProcessingUrl("/login")
+            	.successForwardUrl("/")
             .and()
             .logout()
                 .invalidateHttpSession(true)

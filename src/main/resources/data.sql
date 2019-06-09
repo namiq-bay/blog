@@ -12,19 +12,19 @@ insert into authorities values (6,'rayBradburry', 'ROLE_USER');
 insert into authorities values (7,'darkWriter', 'ROLE_USER');
 
 
-insert into t_articles(id, article_name, category, about, url, img_url, author_img_url,bg_img, hit, article_body, cre_date, user_id)  
-values(1L, 'RSA - Açıq açar kriptosistem', 'CRYPTOGRAPHY', 'Rsa alqoritminin iş prinsipləri. Şifrələmə və deşifrələmə üsulları.', 'rsa', 'cs/image_1.jpg', 'author_n.jpeg', '/images/rsa_bg.jpg', 123, '', '2019-02-03', 1);
+insert into t_articles(id, article_name, category, about, url, img_url, author_img_url,bg_img, hit, article_body, user_id)  
+values(1L, 'RSA - Açıq açarlı kriptosistem', 'CRYPTOGRAPHY', 'Rsa alqoritminin iş prinsipləri. Şifrələmə və deşifrələmə üsulları.', 'rsa', 'image_1.jpg', 'author_n.jpeg', 'rsa_bg.jpg', 123, 'body', 1);
 
-insert into t_articles(id, article_name, category, about, url, img_url, author_img_url,bg_img, hit, article_body, cre_date, user_id)  
-values(2L, 'İkilik Ağaclar (Binary Tree)', 'DATA STRUCTURES', 'Ağac strukturları və İkilik ağaclar', 'binaryTree', 'cs/binary.png', 'author_n.jpeg','/images/cs/btree_bg.jpg', 9, 'test2', '2019-04-06', 1);
-
-
-insert into t_articles(id, article_name, category, about, url, img_url, author_img_url,bg_img, hit, article_body, cre_date, user_id)  
-values(3L, 'Deffi-Helman açar dəyişmə protokolu', 'CRYPTOGRAPHY', 'Parolların generasiyası və açıq kanallarla göndərilməsi.', 'deffi_helman', 'cs/keys.jpeg', 'author_n.jpeg','/images/rsa_bg.jpg', 121, 'test3', '2019-03-03', 1);
+insert into t_articles(id, article_name, category, about, url, img_url, author_img_url,bg_img, hit, article_body, user_id)  
+values(2L, 'İkilik Ağaclar (Binary Tree)', 'DATA STRUCTURES', 'Ağac strukturları və İkilik ağaclar', 'binaryTree', 'binary.png', 'author_n.jpeg','btree_bg.jpg', 9, 'test2',  1);
 
 
-insert into t_articles(id, article_name, category, about, url, img_url, author_img_url,bg_img, hit, article_body, cre_date, user_id)  
-values(4L, 'Kriptoanaliz - "Tezlik analizi" və "Kasiski üsulu"', 'CRYPTOGRAPHY', 'Gizli şifrəni bilmədən gizli məlumatın deşifrələnməsi', 'cryptanalisis', 'cs/encrpt.jpeg', 'author_n.jpeg','/images/rsa_bg.jpg', 91, 'test4', '2019-03-01', 1);
+insert into t_articles(id, article_name, category, about, url, img_url, author_img_url,bg_img, hit, article_body, user_id)  
+values(3L, 'Deffi-Helman açar dəyişmə protokolu', 'CRYPTOGRAPHY', 'Parolların generasiyası və açıq kanallarla ötürülməsi.', 'deffi_helman', 'keys.jpeg', 'author_n.jpeg','rsa_bg.jpg', 121, 'test3', 1);
+
+
+insert into t_articles(id, article_name, category, about, url, img_url, author_img_url,bg_img, hit, article_body, user_id)  
+values(4L, 'Kriptoanaliz - "Tezlik analizi" və "Kasiski üsulu"', 'CRYPTOGRAPHY', 'Gizli şifrəni bilmədən gizli məlumatın deşifrələnməsi', 'cryptanalisis', 'encrpt.jpeg', 'author_n.jpeg','rsa_bg.jpg', 91, 'test4', 1);
 
 
 insert into t_comments(id, name, email, web_site, comment, article_id) 

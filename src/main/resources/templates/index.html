@@ -51,26 +51,41 @@
 
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
-					<li><span th:if="${user?.firstName != null}">
+
+					<div sec:authorize="isAuthenticated()">
+						<li>
 							<div class="col_1" th:text="${'Welcome '+user?.firstName}"></div>
-					</span></li>
+						</li>
+					</div>
+
 					<li class="colorlib-active"><a href="/">Home</a></li>
+
+
+					<div sec:authorize="hasRole('ROLE_ADMIN')">
+						<li><a href="/admin">Admin Panel</a></li>
+					</div>
+
 					<li><a href="cs">Computer Sciences</a></li>
+					<li><a href="projects">My Project</a></li>
 					<li><a href="about">About</a></li>
 					<li><a href="contact">Contact</a></li>
 
-					<span th:if="${user?.firstName == null}">
-						<li><a href="login">Log in</a></li>
-					</span>
 
-					<li><span th:if="${user?.firstName != null}">
+					<div sec:authorize="!isAuthenticated()">
+						<li><a href="login">Log in</a></li>
+					</div>
+
+					<div sec:authorize="isAuthenticated()">
+						<li>
 							<form th:action="@{/logout}" method="POST">
 								<input type="submit" class="submitLink" value="Logout">
 								<input type="hidden" name="${_csrf.parameterName}"
 									value="_csrf.token">
 							</form>
-					</span></li>
 
+						</li>
+
+					</div>
 				</ul>
 			</nav>
 
@@ -129,7 +144,7 @@
 								th:object="${searchTerm}" method="POST">
 
 								<input type="text" id="searchTerm" name="searchTerm"
-									placeholder="Search Articles.."> 
+									placeholder="Search Articles..">
 							</form>
 						</div>
 					</div>
@@ -141,7 +156,7 @@
 							<div class="col-md-4">
 								<div class="blog-entry ftco-animate">
 									<a th:href="'articles/'+${article.url}" class="img img-2"
-										th:style="'background-image: url(/images/' + ${article.imageUrl} + ');'"></a>
+										th:style="'background-image: url(/images/uploads/' + ${article.imageUrl} + ');'"></a>
 									<div class="text text-2 pt-2 mt-3">
 										<span class="category mb-3 d-block"><a href="#"><td
 												th:text="${article.category}" /> </a></span>
@@ -160,7 +175,7 @@
 												<h3>
 													<a th:href="@{/}"><td
 														th:text="${article.user.firstName}"></a>, <span><td
-														th:text="${#dates.day(article.createDate) +' '+ #dates.monthNameShort(article.createDate)+' '+#dates.year(article.createDate)}" /></span>
+														th:text="${#dates.day(article.createdDate) +' '+ #dates.monthNameShort(article.createdDate)+' '+#dates.year(article.createdDate)}" /></span>
 												</h3>
 											</div>
 										</div>
@@ -197,10 +212,9 @@
 							<div class="ftco-footer-widget mb-4 ml-md-4">
 								<h2 class="ftco-heading-2">Category</h2>
 								<ul class="list-unstyled categories">
-									<li><a href="#">Photography <span>(6)</span></a></li>
-									<li><a href="#">Fashion <span>(8)</span></a></li>
-									<li><a href="#">Technology <span>(2)</span></a></li>
-									<li><a href="#">Travel <span>(2)</span></a></li>
+									<li><a href="#">Cryptography<span>(6)</span></a></li>
+									<li><a href="#">Data Structures<span>(8)</span></a></li>
+									<li><a href="#">Algorithms<span>(2)</span></a></li>
 								</ul>
 							</div>
 						</div>

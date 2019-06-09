@@ -18,7 +18,8 @@
 
 <link rel="stylesheet" href="css/owl.carousel.min.css">
 <link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
+<link rel="stylesheet" href="cscsrf
+s/magnific-popup.css">
 
 <link rel="stylesheet" href="css/aos.css">
 
@@ -151,12 +152,15 @@
 							data-validate="Enter password">
 							<input class="input100" type="password" name="password"
 								placeholder="Password"> <span class="focus-input100"
-								data-placeholder="&#xe80f;"></span>
+								data-placeholder="&#xe80f;"></span> 
+								
+								
+								<input type="hidden"
+								name="${_csrf.parameterName}" value="${_csrf.token}">
 						</div>
 						<div class="re-m">
-							<input type="checkbox" name="remember-me" /> Remember me<input
-								type="hidden" name="${_csrf.parameterName}"
-								value="${_csrf.token}" />
+
+							<input type="checkbox" name="remember-me" /> Remember me
 						</div>
 
 						<button type="submit" class="button_log">
@@ -164,7 +168,8 @@
 						</button>
 						<div class="col_2">Or</div>
 
-						<button type="button" class="button_log" onclick="location.href='/reg'">
+						<button type="button" class="button_log"
+							onclick="location.href='/reg'">
 							Register<i class="zmdi zmdi-arrow-right"></i>
 						</button>
 

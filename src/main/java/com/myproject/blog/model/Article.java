@@ -22,14 +22,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "t_articles")
 @XmlRootElement
-public class Article {
+public class Article extends BaseEntity{
 
 	// article instances
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "blogSeqGen")
-	@SequenceGenerator(name = "blogSeqGen", sequenceName = "blog_sequence")
-	private Long id;
-
+	
+	
 	@Column(name = "article_name")
 	private String title;
 
@@ -56,10 +53,6 @@ public class Article {
 
 	@Column(name = "article_body")
 	private String body;
-
-	@Temporal(TemporalType.DATE)
-	@Column(name = "cre_date")
-	private Date createDate;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -92,14 +85,6 @@ public class Article {
 
 	public void setAbout(String about) {
 		this.about = about;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getTitle() {
@@ -150,14 +135,6 @@ public class Article {
 		this.hit = hit;
 	}
 
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
 	public User getUser() {
 		return user;
 	}
@@ -168,9 +145,9 @@ public class Article {
 
 	@Override
 	public String toString() {
-		return "Article [id=" + id + ", title=" + title + ", category=" + category + ", url=" + url
+		return "Article [id=" + getId() + ", title=" + title + ", category=" + category + ", url=" + url
 				+ ", imageUrl=" + imageUrl + ", authImageUrl=" + authImageUrl + ", hit=" + hit + ", createDate="
-				+ createDate + ", user=" + user + "]";
+				+  ", user=" + user + "]";
 	}
 
 }

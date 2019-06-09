@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: com.myproject.blog.web.BlogRestControllerTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 2.42 s <<< FAILURE! - in com.myproject.blog.web.BlogRestControllerTest
+testCreatedUser(com.myproject.blog.web.BlogRestControllerTest)  Time elapsed: 2.136 s  <<< ERROR!
+org.springframework.web.client.HttpClientErrorException: 404 null
+	at com.myproject.blog.web.BlogRestControllerTest.testCreatedUser(BlogRestControllerTest.java:78)
+
+testUpdateUser(com.myproject.blog.web.BlogRestControllerTest)  Time elapsed: 0.255 s  <<< ERROR!
+org.springframework.web.client.HttpClientErrorException: 404 null
+	at com.myproject.blog.web.BlogRestControllerTest.testUpdateUser(BlogRestControllerTest.java:53)
+
+testGetUser(com.myproject.blog.web.BlogRestControllerTest)  Time elapsed: 0.015 s  <<< ERROR!
+org.springframework.web.client.HttpClientErrorException: 404 null
+	at com.myproject.blog.web.BlogRestControllerTest.testGetUser(BlogRestControllerTest.java:90)
+
+testDeleteUser(com.myproject.blog.web.BlogRestControllerTest)  Time elapsed: 0.013 s  <<< ERROR!
+org.springframework.web.client.HttpClientErrorException: 405 null
+	at com.myproject.blog.web.BlogRestControllerTest.testDeleteUser(BlogRestControllerTest.java:41)
+

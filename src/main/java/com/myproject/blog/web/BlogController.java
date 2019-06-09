@@ -3,33 +3,15 @@ package com.myproject.blog.web;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.myproject.blog.model.Comment;
-import com.myproject.blog.model.Email;
 import com.myproject.blog.model.User;
 import com.myproject.blog.service.BlogService;
 
@@ -45,6 +27,26 @@ public class BlogController {
 				// beani-nə enject edir
 	private BlogService blogService;
 
+	@RequestMapping(value= {"","/","/index","/home"})
+	public ModelAndView homePage() {
+		ModelAndView mav = new ModelAndView();
+
+		boolean isAuthenticated;
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		isAuthenticated = authentication instanceof AnonymousAuthenticationToken ? false
+				: authentication.isAuthenticated();
+
+		if (isAuthenticated) {
+			String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
+			User currentUser = blogService.findUserByUname(currentUserName);
+			mav.addObject("user", currentUser);
+		}
+
+		mav.addObject("articles", blogService.findArticles());
+		mav.setViewName("index");
+		return mav;
+	}
+	
 	@RequestMapping("/users") // sayt.com/users tipli request gəldikdə Spring bu requestin getUsers methodu
 								// tərəfindən handle edilməsini təmin edir
 	public ModelAndView getUsers() {
@@ -64,39 +66,30 @@ public class BlogController {
 		model.put("articles", blogService.findArticles());
 		model.put("comments", blogService.findComments());
 
-		// mav.addObject("articles", blogService.findArticles());
-		// mav.addObject("comments",blogService.findComments());
-
 		mav.addAllObjects(model);
 		mav.setViewName("articles");
 		return mav;
 
 	}
-
-	@RequestMapping("/")
-	public ModelAndView homePage() {
-		ModelAndView mav = new ModelAndView();
-
-		boolean isAuthenticated;
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		isAuthenticated = authentication instanceof AnonymousAuthenticationToken ? false
-				: authentication.isAuthenticated();
-
-
-		
-		if (isAuthenticated) {
-			String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
-			User currentUser = blogService.findUserByUname(currentUserName);
-			mav.addObject("user", currentUser);
-			
-		}
-
-		mav.addObject("articles", blogService.findArticles());
-		mav.setViewName("index");
-		return mav;
-
+	
+	@RequestMapping("/about")
+	public ModelAndView about() {
+		ModelAndView mov = new ModelAndView();
+		mov.setViewName("about");
+		return mov;
 	}
 
+	@RequestMapping("/login")
+	public ModelAndView loginPage() {
+		
+		ModelAndView mov = new ModelAndView();
+		mov.setViewName("login");
+		return mov;
+}
+	
+	
+
+// delete
 	@RequestMapping("/photography")
 	public ModelAndView photography() {
 		ModelAndView mav = new ModelAndView();
@@ -132,24 +125,11 @@ public class BlogController {
 		return mov;
 	}
 
-	@RequestMapping("/about")
-	public ModelAndView about() {
-		ModelAndView mov = new ModelAndView();
-		mov.setViewName("about");
-		return mov;
-	}
-
-
-	
-	
-	
-	
-
-	@RequestMapping("/rsa")
+	@RequestMapping("/article")
 	public ModelAndView rsa() {
 		ModelAndView mov = new ModelAndView();
 		mov.addObject("comments", blogService.findComments());
-		mov.setViewName("cs/rsa");
+		mov.setViewName("cs/tree");
 		return mov;
 	}
 
@@ -188,26 +168,14 @@ public class BlogController {
 //	}
 //	
 
-	
-	
-	
-	@RequestMapping("/login")
-	public ModelAndView loginPage() {
-		
-		ModelAndView mov = new ModelAndView();
-		mov.setViewName("login");
-		return mov;
-	}
-	
-	
-	
-	
 //	@GetMapping("/employees/{id}")
 //	Employee one(@PathVariable Long id) {
 //
 //		return repository.findById(id)
 //			.orElseThrow(() -> new EmployeeNotFoundException(id));
 //	}
+
+//until here
 
 
 }

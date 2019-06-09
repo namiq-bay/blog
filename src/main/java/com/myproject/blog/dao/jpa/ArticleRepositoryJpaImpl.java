@@ -40,4 +40,9 @@ public class ArticleRepositoryJpaImpl implements ArticleRepository {
 				.getSingleResult();
 				
 	}
+
+	@Override
+	public void crate(Article article) {
+		entityManager.persist(article);		
+	}
 }

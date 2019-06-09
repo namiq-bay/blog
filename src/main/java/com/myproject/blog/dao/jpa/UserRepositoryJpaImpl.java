@@ -52,8 +52,12 @@ public class UserRepositoryJpaImpl implements UserRepository {
 
 	@Override
 	public User findByUname(String username) {
-		return entityManager.createQuery("from User where username = :username", User.class)
-				.setParameter("username", username).getSingleResult();
+		return entityManager
+				.createQuery("from User where username = :username", User.class)
+				.setParameter("username", username)
+				.getSingleResult();
 	}
-
 }
+
+
+

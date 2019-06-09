@@ -1,0 +1,3 @@
+com\myproject\blog\web\BlogIntegrationTest.class
+com\myproject\blog\web\BlogRestControllerTest.class
+com\myproject\blog\web\PasswordEncoderTests.class

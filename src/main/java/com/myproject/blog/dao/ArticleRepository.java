@@ -10,4 +10,7 @@ public interface ArticleRepository {
 	Article findByUrl(String url);	
 	Article hitById(Long id);
 	Article update(Article article);	
+	
+	void crate(Article article);
+	
 }

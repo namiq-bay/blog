@@ -30,28 +30,21 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "users") // Table annotasiyası ilə User sinifi ilə t_user table-ını əlaqəəndiririk
 @XmlRootElement // User obyektlərinin xml formata dönüşdürmək üçün domain sinif üzərinə bu
 				// annotasiyanı əlavə edirik.
-public class User {
-	@Id // id annotasiyası hansı property-nin primary key olduğunu təyin edir.
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "blogSeqGen")
-	@SequenceGenerator(name = "blogSeqGen", sequenceName = "blog_sequence")
+public class User extends BaseEntity {
 
-	// id propertisini üçün sütun əlaqəsi qeyd etmədik, bu zaman JPA property adı
-	// ilə sütun adını birbaşa əlaqələndrir
-	private Long id;
-
-	@Column(name = "username")
+	@Column(name = "username", nullable = false, updatable=false)
 	private String username;
 
-	@Column(name = "first_name") // firstName property-sini first_name swtunu ilə əlaqələndirdik
+	@Column(name = "first_name", nullable = false) // firstName property-sini first_name swtunu ilə əlaqələndirdik
 	private String firstName;
 
-	@Column(name = "last_name")
+	@Column(name = "last_name", nullable = false)
 	private String lastName;
 
-	@Column(name = "password")
+	@Column(name = "password", nullable = false, updatable=false)
 	private String password;
 
-	@Column(name = "email")
+	@Column(name = "email", nullable = false, updatable=false)
 	private String email;
 
 	@OneToMany(mappedBy = "user")
@@ -64,14 +57,6 @@ public class User {
 	public void setUsername(String username) {
 		this.username = username;
 //		authorities.setUsername(username);
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -118,7 +103,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + "]";
+		return "User [id=" + getId() + ", firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
 
 }

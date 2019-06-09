@@ -1,5 +1,8 @@
 package com.myproject.blog.service;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import javax.persistence.NoResultException;
@@ -10,6 +13,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.myproject.blog.dao.ArticleRepository;
 import com.myproject.blog.dao.AuthorityRepository;
@@ -144,4 +148,11 @@ public class BlogServiceImpl implements BlogService {
 			throw new NoResultException("Article not found with url: " + url);
 		return article;
 	}
+
+	@Override
+	public void createArticle(Article article) {
+		articleRepository.crate(article);		
+	}
+
+
 }

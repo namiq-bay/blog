@@ -2,6 +2,8 @@ package com.myproject.blog.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.myproject.blog.exception.UserNotFoundException;
 import com.myproject.blog.model.Article;
 import com.myproject.blog.model.Authorities;
@@ -16,12 +18,13 @@ public interface BlogService {
 	void createUser(User user); 
 	void updateUser(User user);
 	void deleteUser(Long id);
-		
+	
 	
 	List<Article> findArticles();
 	Article findArticleByUrl(String url);
 	Article findArticleById(Long id);
 	void updateArticle(Article article);
+	void createArticle(Article article);
 	
 	List<Comment> findComments();
 	void createComment(Comment comment); 	

@@ -27,7 +27,6 @@ create table public.t_articles(
 	bg_img varchar(255),
 	hit bigint,
 	article_body text,
-	cre_date date,
 	user_id bigint
 );
 
