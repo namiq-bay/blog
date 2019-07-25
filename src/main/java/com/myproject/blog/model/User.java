@@ -44,7 +44,7 @@ public class User extends BaseEntity {
 	@Column(name = "password", nullable = false, updatable=false)
 	private String password;
 
-	@Column(name = "email", nullable = false, updatable=false)
+	@Column(name = "email", nullable = false)
 	private String email;
 
 	@OneToMany(mappedBy = "user")

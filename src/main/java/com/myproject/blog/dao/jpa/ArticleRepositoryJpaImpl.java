@@ -19,7 +19,7 @@ public class ArticleRepositoryJpaImpl implements ArticleRepository {
 
 	@Override
 	public List<Article> findAll() {
-		return entityManager.createQuery("from Article", Article.class).getResultList();
+		return entityManager.createQuery("from Article ORDER BY id DESC", Article.class).getResultList();
 	}
 
 	@Override
@@ -44,5 +44,11 @@ public class ArticleRepositoryJpaImpl implements ArticleRepository {
 	@Override
 	public void crate(Article article) {
 		entityManager.persist(article);		
+	}
+
+	@Override
+	public void delete(Long id) {
+		entityManager.remove(entityManager.getReference(Article.class, id));
+		
 	}
 }

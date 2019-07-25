@@ -154,5 +154,17 @@ public class BlogServiceImpl implements BlogService {
 		articleRepository.crate(article);		
 	}
 
+	@Override
+	public void deleteArticle(Long id) {
+		articleRepository.delete(id);
+		
+	}
+
+	@Override
+	public void deleteCommentsByArticle(Article article) {
+		commentRepository.deleteByArticleId(article);
+		
+	}
+
 
 }

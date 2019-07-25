@@ -23,7 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Entity
-@Table(name="t_comments")
+@Table(name="comments")
 @XmlRootElement
 public class Comment {
 

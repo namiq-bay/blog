@@ -37,6 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				"/articles/**",
 				"/p/**",
 				"/update/**",
+				"/uploadFile",
 				"/")
 				.permitAll()
 			.antMatchers("/pub/**").permitAll()
@@ -60,7 +61,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login?logout")
                 .permitAll()
             .and()
-            .exceptionHandling();
+            	.exceptionHandling()
+            .and()
+            	.rememberMe()
+            	.rememberMeParameter("remember-me");
+            	
+            	
+//            	.userDetailsService(userDetailsService);
 		
 //		http.authorizeRequests()
 //		.anyRequest()
@@ -71,8 +78,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //		.loginProcessingUrl("/login")
 //		.failureUrl("/login?loginFailed=true");
 //		
-		http.rememberMe()
-		.userDetailsService(userDetailsService);		
 	}
 	
 	@Override

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-<title>bloqum</title>
+<title>Kiber Yazılar</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -44,7 +44,7 @@
 		<aside id="colorlib-aside" role="complementary"
 			class="js-fullheight text-center">
 			<h1 id="colorlib-logo">
-				<a href="/">bloqum<span>.</span>tk
+				<a href="/">Kiber Bloq<span></span>
 				</a>
 			</h1>
 
@@ -65,10 +65,9 @@
 						<li><a href="/admin">Admin Panel</a></li>
 					</div>
 
-					<li><a href="cs">Computer Sciences</a></li>
-					<li><a href="projects">My Project</a></li>
-					<li><a href="about">About</a></li>
-					<li><a href="contact">Contact</a></li>
+					<li><a href="p/projects">My Projects</a></li>
+					<li><a href="p/about">About</a></li>
+					<li><a href="p/contact">Contact</a></li>
 
 
 					<div sec:authorize="!isAuthenticated()">
@@ -108,15 +107,15 @@
 
 		<!-- END COLORLIB-ASIDE -->
 		<div id="colorlib-main">
-			<div class="hero-wrap js-fullheight"
-				style="background-image: url(images/bg_1.jpg);"
+			<div class="hero-wrap js-fullheight" 
+				style="background-image: url(https://drive.google.com/uc?id=1u_lEA-uzqf1FGd6d7PK3U9PTisQNyRy6);"
 				data-stellar-background-ratio="0.5">
 				<div class="overlay"></div>
 				<div
 					class="js-fullheight d-flex justify-content-center align-items-center">
 					<div class="col-md-8 text text-center">
 						<div class="img mb-4"
-							style="background-image: url(images/author.jpeg);"></div>
+							style="background-image: url(https://drive.google.com/uc?id=1UkAl5y0EH7O3iXklh-O25abRr8D_5IiD);"></div>
 						<div class="desc">
 							<h2 class="subheading">Hello I'm</h2>
 							<h1 class="mb-4">Namiq Bayramov</h1>
@@ -125,7 +124,7 @@
 								In this blog, I will share everything that is trapped in the
 								cells of my brain and is dying to go out.</p>
 							<p>
-								<a href="#" class="btn-custom">More About Me <span
+								<a href="/p/about" class="btn-custom">More About Me <span
 									class="ion-ios-arrow-forward"></span></a>
 							</p>
 
@@ -140,7 +139,7 @@
 							<h2 class="mb-4">Articles</h2>
 
 							<!-- Search Bar -->
-							<form action="#" th:action="@{/searchArticle}"
+							<form action="#" th:action="@{/p/searchArticle}"
 								th:object="${searchTerm}" method="POST">
 
 								<input type="text" id="searchTerm" name="searchTerm"
@@ -156,7 +155,7 @@
 							<div class="col-md-4">
 								<div class="blog-entry ftco-animate">
 									<a th:href="'articles/'+${article.url}" class="img img-2"
-										th:style="'background-image: url(/images/uploads/' + ${article.imageUrl} + ');'"></a>
+										th:style="'background-image: url(' + ${article.imageUrl} + ');'"></a>
 									<div class="text text-2 pt-2 mt-3">
 										<span class="category mb-3 d-block"><a href="#"><td
 												th:text="${article.category}" /> </a></span>

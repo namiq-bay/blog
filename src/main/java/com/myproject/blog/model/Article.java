@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name = "t_articles")
+@Table(name = "articles")
 @XmlRootElement
 public class Article extends BaseEntity{
 
@@ -45,9 +45,6 @@ public class Article extends BaseEntity{
 	@Column(name = "author_img_url")
 	private String authImageUrl;
 	
-	@Column(name="bg_img")
-	private String bgImage;
-
 	@Column(name = "hit")
 	private Long hit;
 
@@ -63,13 +60,6 @@ public class Article extends BaseEntity{
 
 	// Comment instances
 	
-	public void setBgImage(String bgImage) {
-		this.bgImage = bgImage;
-	}
-	
-	public String getBgImage() {
-		return bgImage;
-	}
 
 	public void setBody(String body) {
 		this.body = body;

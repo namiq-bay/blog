@@ -31,6 +31,7 @@
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/icomoon.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="/css/index.css">
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
@@ -114,20 +115,41 @@
 		<aside id="colorlib-aside" role="complementary"
 			class="js-fullheight text-center">
 			<h1 id="colorlib-logo">
-				<a href="index.html" style="font-size: 40px">bloqum<span>.</span>tk
+				<a href="index.html" style="font-size: 40px">Kiber Bloq<span></span>
 				</a>
 			</h1>
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="photography">Photography</a></li>
-					<li><a href="travel">Travel</a></li>
-					<li><a href="fashion">Fashion</a></li>
-					<li><a href="about">About</a></li>
-					<li><a href="contact">Contact</a></li>
-					<li class="colorlib-active"><a href="contact">Login</a></li>
 
+					<li><a href="/">Home</a></li>
+
+
+					<div sec:authorize="hasRole('ROLE_ADMIN')">
+						<li><a href="/admin">Admin Panel</a></li>
+					</div>
+
+					<li><a href="p/projects">My Projects</a></li>
+					<li><a href="p/about">About</a></li>
+					<li><a href="p/contact">Contact</a></li>
+
+
+					<div sec:authorize="!isAuthenticated()">
+						<li><a href="login">Log in</a></li>
+					</div>
+
+					<div sec:authorize="isAuthenticated()">
+						<li>
+							<form th:action="@{/logout}" method="POST">
+								<input type="submit" class="submitLink" value="Logout">
+								<input type="hidden" name="${_csrf.parameterName}"
+									value="_csrf.token">
+							</form>
+
+						</li>
+
+					</div>
 				</ul>
+
 			</nav>
 
 			<div class="colorlib-footer">
@@ -176,22 +198,12 @@
 							<input id="url" type="text" placeholder="Article Url"
 								class="form-control" th:field="*{url}" required="required">
 						</div>
-
-
+						
 						<div class="form-wrapper">
-
-							<label for="file">Choose article header photo</label> <input
-								type="file" name="files" class="form-control" accept=".jpg">
-
-							<i class="zmdi zmdi-account"></i>
-						</div>
-
-						<div class="form-wrapper">
-
-							<label for="file">Choose article cover photo</label> <input
-								type="file" name="files" class="form-control" accept=".jpg">
-
-							<i class="zmdi zmdi-account"></i>
+						<label for="file">Enter article photo url</label> 
+						
+							<input id="imageUrl" type="text" placeholder="Url"
+								class="form-control" th:field="*{imageUrl}" required="required">				
 						</div>
 
 						<textarea id="editor1" rows="10" cols="80" th:field="*{body}">
@@ -199,7 +211,7 @@
 						</textarea>
 
 						<button type="submit">
-							Register <i class="zmdi zmdi-arrow-right"></i>
+							Create <i class="zmdi zmdi-arrow-right"></i>
 						</button>
 
 					</form>

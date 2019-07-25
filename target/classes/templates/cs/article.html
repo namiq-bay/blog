@@ -1,8 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:pages="http://www.thymeleaf.org/pagesdialect">
+<html xmlns:og="http://ogp.me/ns#" xmlns:th="http://www.thymeleaf.org" xmlns:pages="http://www.thymeleaf.org/pagesdialect"  xmlns="https://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml" prefix="og: http://ogp.me/ns#">
 <head>
-<title></title>
+
+
+<title th:text="${article.title}" ></title> 
+<meta name="description" th:attr="content=${article.about}" >
+
+<meta name="og:image" property="og:image" th:attr="content=${article.imageUrl}" />
+<meta name="og:image" property="og:image" th:attr="content=${article.imageUrl}" >
+<meta name="og:image" property="og:image" th:attr="content=${'https://drive.google.com/uc?id=1jVjDJU9kgkOv_85u3AdVcmTTVXaTIxdM'}" >
+
+
+
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -46,6 +55,7 @@
 <link rel="stylesheet" href="/css/flaticon.css">
 <link rel="stylesheet" href="/css/icomoon.css">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/index.css">
 
 <link
 	th:href="@{//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}"
@@ -61,6 +71,8 @@
 	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
 	crossorigin="anonymous">
 
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
 
 <script type="text/x-mathjax-config">
@@ -100,26 +112,37 @@ MathJax.Hub.Config({
 		<aside id="colorlib-aside" role="complementary"
 			class="js-fullheight text-center">
 			<h1 id="colorlib-logo">
-				<a href="/">bloqum<span>.</span>tk
-				</a>
+				<a href="/">Kiber Bloq<span></span></a>
 			</h1>
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
 					<li><a href="/">Home</a></li>
-					<li><a href="/cs">Computer Sciences</a></li>
-					<li><a href="/about">About</a></li>
-					<li><a href="/contact">Contact</a></li>
-					<li><span th:if="${user?.firstName == null}"> <a
-							href="/login">Log in</a>
-					</span></li>
-					<li><span th:if="${user?.firstName != null}">
+					<div sec:authorize="hasRole('ROLE_ADMIN')">
+						<li><a href="/admin">Admin Panel</a></li>
+					</div>
+
+					<li><a href="/p/projects">My Projects</a></li>
+					<li><a href="/p/about">About</a></li>
+					<li><a href="/p/contact">Contact</a></li>
+
+
+					<div sec:authorize="!isAuthenticated()">
+						<li><a href="/login">Log in</a></li>
+					</div>
+
+					<div sec:authorize="isAuthenticated()">
+						<li>
 							<form th:action="@{/logout}" method="POST">
 								<input type="submit" class="submitLink" value="Logout">
 								<input type="hidden" name="${_csrf.parameterName}"
 									value="_csrf.token">
 							</form>
-					</span></li>
+
+						</li>
+
+					</div>
 				</ul>
+
 			</nav>
 			<div class="colorlib-footer">
 				<p>
@@ -139,7 +162,7 @@ MathJax.Hub.Config({
 		<!-- END COLORLIB-ASIDE -->
 		<div id="colorlib-main">
 			<div class="hero-wrap js-fullheight"
-				th:style="'background-image:url(/images/uploads/'+ ${article.bgImage} + ');'"
+				th:style="'background-image:url('+${article.imageUrl}+');'"
 				data-stellar-background-ratio="0.5">
 				<div class="overlay"></div>
 				<div
@@ -170,13 +193,44 @@ MathJax.Hub.Config({
 							</p>
 							<div sec:authorize="hasRole('ROLE_EDITOR')">
 
-								<span class="box_2">
-								<a th:href="@{'/articles/update/' + ${article.id}}" >
-									<button class="edit-button">
-										Edit <i class="fa fa-edit"></i>
-									</button></a>
+								<span class="box_3">
+									<button onclick="myFunction2()" class="admin-button">
+										Delete <span class="glyphicon glyphicon-remove"></span>
+
+									</button>
+
+									<form id="myForm" action="#"
+										th:action="@{'/articles/delete/' + ${article.id}}"
+										method="post" enctype="multipart/form-data">
+									</form>
+										
+										
+										 <script>
+											function myFunction2() {
+
+												if (confirm("Are you sure delete this article?")) {
+
+													document.getElementById(
+															"myForm").submit();
+												} else {
+
+												}
+											}
+										</script>
+								</span> 								
+
+								<span class="box_2"> <a
+									th:href="@{'/articles/update/' + ${article.id}}">
+										<button class="admin-button">
+											Edit <i class="fa fa-edit"></i>
+										</button>
+								</a>
 								</span> </br>
 							</div>
+							</br>
+							
+							
+							<span th:utext="${testPath}"> </span>
 
 							<!-- Article begin here-->
 							<span th:utext="${article.body}"> </span>
@@ -186,7 +240,7 @@ MathJax.Hub.Config({
 								<div class="comment-form-wrap pt-5">
 									<h3 class="mb-5">Leave a comment</h3>
 
-									<form name="form1" action="#" th:action="@{/sendComment}"
+									<form name="form1" action="#" th:action="@{/p/sendComment}"
 										th:object="${comment}" method="post"
 										class="p-3 p-md-5 bg-light" onsubmit="return dateCheck()">
 
@@ -231,6 +285,7 @@ MathJax.Hub.Config({
 											class="alert alert-success">
 											<strong>Successful!</strong> Your comment will be added after
 											checking.
+											
 										</div>
 
 
@@ -249,7 +304,7 @@ MathJax.Hub.Config({
 
 								<th:block th:each="comment :${comments}">
 									<tr
-										th:if="${comment.article.id} == ${article.id} AND ${comment.accept} == 0">
+										th:if="${comment.article.id} == ${article.id} AND ${comment.accept} == 1">
 										<div class="card">
 											<div class="card-body">
 												<div class="row">
@@ -257,7 +312,7 @@ MathJax.Hub.Config({
 														<img src="https://image.ibb.co/jw55Ex/def_face.jpg"
 															class="img img-rounded img-fluid" />
 														<p class="text-secondary text-center">
-														<p
+															<p
 															th:text="${
 													#dates.day(comment.commentDate) +' '+ 
 													#dates.monthNameShort(comment.commentDate) +' '+
@@ -350,9 +405,17 @@ MathJax.Hub.Config({
 								<script>
 									document.write(new Date().getFullYear());
 								</script>
-								All rights reserved
-								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							</p>
+															All rights reserved
+															<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+														</p>
+														
+														
+														
+														
+						
+						
+						
+						
 						</div>
 					</div>
 				</div>

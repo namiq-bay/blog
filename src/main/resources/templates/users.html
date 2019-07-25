@@ -1,27 +1,153 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link th:href="@{/css/users.css}" type="text/css" rel="stylesheet" />
-<meta charset="UTF-8" />
-<title>Insert title here</title>
+
+<meta charset="ISO-8859-1">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<title>Users</title>
+<link rel="stylesheet" href="/css/users.css">
 </head>
 <body>
+
+	<!-- Header -->
+	<div class="topnav">
+		<a class="active" href="/">Home</a> <a href="/admin">Admin Panel</a> <a
+			href="/admin/users">Users</a>
+		<div class="search-container">
+			<form action="#" th:action="@{/users/search}"
+				th:object="${searchTerm}" method="POST">
+				<input type="text" id="searchTerm" name="searchTerm"
+					placeholder="Search User">
+				<button type="submit">
+					<i class="fa fa-search"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+	<!-- Header end-->
+
+
+
 	<table>
 		<thead>
-			<tr style="font-weight: bold" bgcolor="lightgreen">
+			<tr style="font-weight: bold;" bgcolor="lightgreen">
 				<td>ID</td>
+				<td>User Name</td>
 				<td>First Name</td>
 				<td>Last Name</td>
+				<td>E-mail</td>
+				<td>Create by</td>
+				<td>Create date</td>
+				<td>Update by</td>
+				<td>Update date</td>
+
 			</tr>
 		</thead>
-		<th:block th:each="user, iterStat:${users}">
-			<tr th:bgcolor="${iterStat.odd} ? white:lightgray ">
-				<td th:text="${user.id}" />
-				<td th:text="${user.firstName}" />
-				<td th:text="${user.lastName}" />
-			</tr>
-		</th:block>
+
+		<tbody>
+			<th:block th:each="user,iterStat:${users}">
+				<tr>
+					<form th:action="@{/update/user/}+${user.id}" method="POST"
+						th:object="${user}">
+						<td><input type="text" placeholder="ID" th:value="*{id}"
+							id="id" name="id" required="required" size="4" /></td>
+						<td><input type="text" placeholder="User Name"
+							th:value="*{username}" id="username" name="username"
+							required="required" size="10" /></td>
+						<td><input type="text" placeholder="First Name"
+							th:value="*{firstName}" id="firstName" name="firstName"
+							required="required" size="10" /></td>
+						<td><input type="text" placeholder="Last Name"
+							th:value="*{lastName}" id="lastName" name="lastName"
+							required="required" size="10" /></td>
+						<td><input type="text" placeholder="E-mail"
+							th:value="*{email}" id="email" name="email" required="required" />
+						</td>
+
+						<td><input type="text" placeholder="Create by"
+							th:value="*{createdBy}" id="createdBy" name="createdBy" size="10" /></td>
+						<td><input type="text" placeholder="Create date"
+							th:value="*{createdDate}" id="createdDate" name="createdDate"
+							size="17" /></td>
+						<td><input type="text" placeholder="Update by"
+							th:value="*{updatedBy}" id="updatedBy" name="updatedBy" size="10" /></td>
+						<td><input type="text" placeholder="Update date"
+							th:value="*{updatedDate}" id="updatedDate" name="updatedDate"
+							size="17" /></td>
+					<td>
+						<button type="submit">Update User</button>
+					</td>
+
+					</form>
+
+					<td>
+						<form th:action="@{/delete/user/}+${user.id}" method="post">
+							<input type="submit" name="delete" value="Delete User" />
+						</form>
+					</td>
+
+				</tr>
+			</th:block>
+		</tbody>
 	</table>
+
+	<div th:if="${message} != null">
+		<div class="alert alert-success">
+			<span th:text="${message}" />
+		</div>
+	</div>
+	
+	
+	<div class="box">
+	
+	<h2>User Authorities</h2>
+	
+	</div>
+
+<table>
+		<thead>
+			<tr style="font-weight: bold;" bgcolor="lightgreen">
+				<td>ID</td>
+				<td>User Name</td>
+				<td>User</td>
+				<td>Editor</td>
+				<td>Admin</td>
+			</tr>
+		</thead>
+		
+		
+		</table>
+		
+	
+
+
+	<!-- 	<form th:action="@{/create/user}" method="POST" th:object="${user}"> -->
+
+	<!-- 		<table> -->
+	<!-- 			<tr> -->
+	<!-- 				<td><input type="text" placeholder="User Name" -->
+	<!-- 					th:field="*{username}" id="username" name="username" -->
+	<!-- 					required="required" size="10" /></td> -->
+	<!-- 				<td><input type="text" placeholder="Password" -->
+	<!-- 					th:field="*{password}" id="password" name="password" -->
+	<!-- 					required="required" size="10" /></td> -->
+	<!-- 				<td><input type="text" placeholder="First Name" -->
+	<!-- 					th:field="*{firstName}" id="firstName" name="firstName" -->
+	<!-- 					required="required" size="10" /></td> -->
+	<!-- 				<td><input type="text" placeholder="Last Name" -->
+	<!-- 					th:field="*{lastName}" id="lastName" name="lastName" -->
+	<!-- 					required="required" size="10" /></td> -->
+	<!-- 				<td><input type="text" placeholder="E-mail" th:field="*{email}" -->
+	<!-- 					id="email" name="email" required="required" /></td> -->
+	<!-- 				<td> -->
+	<!-- 					<button type="submit">Create User</button> -->
+	<!-- 				</td> -->
+	<!-- 			</tr> -->
+	<!-- 		</table> -->
+	<!-- 	</form> -->
+
 </body>
 </html>

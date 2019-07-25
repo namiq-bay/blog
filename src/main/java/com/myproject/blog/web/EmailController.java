@@ -20,13 +20,7 @@ public class EmailController {
 
 	@Autowired
 	private JavaMailSender mailSender;
-
-	@GetMapping("/contact")
-	public String contactPage(Model model) {
-		model.addAttribute("email", new Email());
-		return "contact";
-	}
-
+	
 	@PostMapping("/sendEmail")
 	public String emailSending(@ModelAttribute Email email) {
 
@@ -38,39 +32,6 @@ public class EmailController {
 
 		mailSender.send(msg);
 
-		return "redirect:/contact";
+		return "redirect:/p/contact";
 	}
-
-//	@RequestMapping("/contact")
-//	public ModelAndView contact() {
-//		ModelAndView mov = new ModelAndView();
-//		mov.setViewName("contact");
-//		return mov;
-//	}
-//	
-//	@ModelAttribute
-//	public Email initModel() {
-//		return new Email();
-//	}
-//	
-//	@RequestMapping(value = "/sendEmail", method = RequestMethod.POST)
-//	public String emailFormHandle(@ModelAttribute Email email) {
-//		
-//		
-//		
-//		SimpleMailMessage msg = new SimpleMailMessage();
-//		msg.setFrom("aytacmemmedova221@gmail.com");
-//		msg.setTo("namiqbayramov14@gmail.com");
-//		msg.setSubject(email.getSubject());
-//		msg.setText(email.getMessage());
-//		msg.setSubject("testSub");
-//		msg.setText("Hello World: "+ email.getMessage());
-//		
-//		
-//		mailSender.send(msg);
-//		
-//		return "redirect:/contact";
-//		
-//	}
-
 }

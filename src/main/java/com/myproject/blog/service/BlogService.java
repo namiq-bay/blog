@@ -25,11 +25,16 @@ public interface BlogService {
 	Article findArticleById(Long id);
 	void updateArticle(Article article);
 	void createArticle(Article article);
+	void deleteArticle(Long id);
+	
 	
 	List<Comment> findComments();
-	void createComment(Comment comment); 	
+	void createComment(Comment comment); 
+	void deleteCommentsByArticle(Article article);
 
 	void createAuthority(Authorities authorities);
+	
+	
 
 	
 }

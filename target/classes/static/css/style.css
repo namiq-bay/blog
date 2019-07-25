@@ -172,37 +172,55 @@ a:hover {
 }
 
 a
+
+
 :not
+
  
+
 (
 [
 href
 ]
+
  
+
 )
 :not
+
  
+
 (
 [
 tabindex
 ]
+
  
+
 )
 {
 color
+
+
 :
+
  
+
 inherit
-;
 
-	
+
+;
 text-decoration
+
+
 :
+
  
+
 none
+
+
 ;
-
-
 }
 a:not ([href] ):not ([tabindex] ):hover, a:not ([href] ):not ([tabindex]
 	 ):focus {
@@ -228,6 +246,7 @@ pre {
 
 figure {
 	margin: 0 0 1rem;
+	margin-left: 50px;
 }
 
 img {
@@ -236,20 +255,30 @@ img {
 }
 
 svg
+
+
 :not
+
  
+
 (
 :root
+
  
+
 )
 {
 overflow
+
+
 :
+
  
+
 hidden
+
+
 ;
-
-
 }
 table {
 	border-collapse: collapse;
@@ -475,21 +504,31 @@ mark, .mark {
 }
 
 .list-inline-item
+
+
 :not
+
  
+
 (
 :last-child
+
  
+
 )
 {
 margin-right
+
+
 :
+
  
+
 0
 .5rem
+
+
 ;
-
-
 }
 .initialism {
 	font-size: 90%;
@@ -2038,36 +2077,54 @@ pre code {
 }
 
 select
+
+
 .form-control
+
+
 :not
+
  
+
 (
 [
 size
 ]
+
  
+
 )
 :not
+
  
+
 (
 [
 multiple
 ]
+
  
+
 )
 {
 height
+
+
 :
+
  
+
 calc
+
+
 (2
 .25rem
 +
 2
 px
+
+
 );
-
-
 }
 select.form-control:focus::-ms-value {
 	color: #495057;
@@ -2138,149 +2195,227 @@ select.form-control:focus::-ms-value {
 }
 
 select
+
+
 .form-control-sm
+
+
 :not
+
  
+
 (
 [
 size
 ]
+
  
+
 )
 :not
+
  
+
 (
 [
 multiple
 ]
+
  
+
 ),
 .input-group-sm
 >
 select
+
+
 .form-control
+
+
 :not
 
+
 	
+
 (
 [
 size
 ]
+
  
+
 )
 :not
+
  
+
 (
 [
 multiple
 ]
+
  
+
 ),
 .input-group-sm
 >
 .input-group-prepend
 >
 select
+
+
 .input-group-text
+
+
 :not
 
+
 	
+
 (
 [
 size
 ]
+
  
+
 )
 :not
+
  
+
 (
 [
 multiple
 ]
+
  
+
 ),
 .input-group-sm
 >
 .input-group-append
 >
 select
+
+
 .input-group-text
+
+
 :not
 
+
 	
+
 (
 [
 size
 ]
+
  
+
 )
 :not
+
  
+
 (
 [
 multiple
 ]
+
  
+
 ),
 .input-group-sm
 >
 .input-group-prepend
 >
 select
+
+
 .btn
+
+
 :not
 
+
 	
+
 (
 [
 size
 ]
+
  
+
 )
 :not
+
  
+
 (
 [
 multiple
 ]
+
  
+
 ),
 .input-group-sm
 >
 .input-group-append
 >
 select
+
+
 .btn
+
+
 :not
 
+
 	
+
 (
 [
 size
 ]
+
  
+
 )
 :not
+
  
+
 (
 [
 multiple
 ]
+
  
+
 )
 {
 height
+
+
 :
+
  
+
 calc
+
+
 (1
 .8125rem
 +
 2
 px
+
+
 );
-
-
 }
 .form-control-lg, .input-group-lg>.form-control, .input-group-lg>.input-group-prepend>.input-group-text,
 	.input-group-lg>.input-group-append>.input-group-text, .input-group-lg>.input-group-prepend>.btn,
@@ -2292,149 +2427,227 @@ px
 }
 
 select
+
+
 .form-control-lg
+
+
 :not
+
  
+
 (
 [
 size
 ]
+
  
+
 )
 :not
+
  
+
 (
 [
 multiple
 ]
+
  
+
 ),
 .input-group-lg
 >
 select
+
+
 .form-control
+
+
 :not
 
+
 	
+
 (
 [
 size
 ]
+
  
+
 )
 :not
+
  
+
 (
 [
 multiple
 ]
+
  
+
 ),
 .input-group-lg
 >
 .input-group-prepend
 >
 select
+
+
 .input-group-text
+
+
 :not
 
+
 	
+
 (
 [
 size
 ]
+
  
+
 )
 :not
+
  
+
 (
 [
 multiple
 ]
+
  
+
 ),
 .input-group-lg
 >
 .input-group-append
 >
 select
+
+
 .input-group-text
+
+
 :not
 
+
 	
+
 (
 [
 size
 ]
+
  
+
 )
 :not
+
  
+
 (
 [
 multiple
 ]
+
  
+
 ),
 .input-group-lg
 >
 .input-group-prepend
 >
 select
+
+
 .btn
+
+
 :not
 
+
 	
+
 (
 [
 size
 ]
+
  
+
 )
 :not
+
  
+
 (
 [
 multiple
 ]
+
  
+
 ),
 .input-group-lg
 >
 .input-group-append
 >
 select
+
+
 .btn
+
+
 :not
 
+
 	
+
 (
 [
 size
 ]
+
  
+
 )
 :not
+
  
+
 (
 [
 multiple
 ]
+
  
+
 )
 {
 height
+
+
 :
+
  
+
 calc
+
+
 (2
 .875rem
 +
 2
 px
+
+
 );
-
-
 }
 .form-group {
 	margin-bottom: 1rem;
@@ -2860,26 +3073,40 @@ px
 }
 
 .btn
+
+
 :not
+
  
+
 (
 :disabled
+
  
+
 )
 :not
+
  
+
 (
 .disabled
+
  
+
 )
 {
 cursor
+
+
 :
+
  
+
 pointer
+
+
 ;
-
-
 }
 .btn:not (:disabled ):not (.disabled ):active, .btn:not (:disabled ):not
 	 (.disabled ).active {
@@ -3562,33 +3789,53 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 }
 
 .fade
+
+
 :not
+
  
+
 (
 .show
+
  
+
 )
 {
 opacity
+
+
 :
+
  
+
 0;
 }
 .collapse
+
+
 :not
+
  
+
 (
 .show
+
  
+
 )
 {
 display
+
+
 :
+
  
+
 none
+
+
 ;
-
-
 }
 .collapsing {
 	position: relative;
@@ -3986,59 +4233,99 @@ none
 .input-group
 >
 .form-control
+
+
 :not
+
  
+
 (
 :last-child
+
  
+
 ),
 .input-group
 >
 .custom-select
+
+
 :not
 
+
 	
+
 (
 :last-child
+
  
+
 )
 {
 border-top-right-radius
+
+
 :
+
  
+
 0;
 border-bottom-right-radius
+
+
 :
+
  
+
 0;
 }
 .input-group
 >
 .form-control
+
+
 :not
+
  
+
 (
 :first-child
+
  
+
 ),
 .input-group
 >
 .custom-select
+
+
 :not
 
+
 	
+
 (
 :first-child
+
  
+
 )
 {
 border-top-left-radius
+
+
 :
+
  
+
 0;
 border-bottom-left-radius
+
+
 :
+
  
+
 0;
 }
 .input-group>.custom-file {
@@ -4131,11 +4418,17 @@ border-bottom-left-radius
 .input-group
 >
 .input-group-append
+
+
 :not
+
  
+
 (
 :last-child
+
  
+
 )
 >
 .btn
@@ -4143,12 +4436,18 @@ border-bottom-left-radius
 .input-group
 >
 .input-group-append
+
+
 :not
 
+
 	
+
 (
 :last-child
+
  
+
 )
 >
 .input-group-text
@@ -4156,43 +4455,71 @@ border-bottom-left-radius
 .input-group
 >
 .input-group-append
+
+
 :last-child
 >
 .btn
+
+
 :not
 
+
 	
+
 (
 :last-child
+
  
+
 )
 :not
+
  
+
 (
 .dropdown-toggle
+
  
+
 ),
 .input-group
 >
 .input-group-append
+
+
 :last-child
 >
 .input-group-text
+
+
 :not
 
+
 	
+
 (
 :last-child
+
  
+
 )
 {
 border-top-right-radius
+
+
 :
+
  
+
 0;
 border-bottom-right-radius
+
+
 :
+
  
+
 0;
 }
 .input-group
@@ -4210,11 +4537,17 @@ border-bottom-right-radius
 .input-group
 >
 .input-group-prepend
+
+
 :not
+
  
+
 (
 :first-child
+
  
+
 )
 >
 .btn
@@ -4222,11 +4555,17 @@ border-bottom-right-radius
 .input-group
 >
 .input-group-prepend
+
+
 :not
+
  
+
 (
 :first-child
+
  
+
 )
 >
 .input-group-text
@@ -4234,36 +4573,60 @@ border-bottom-right-radius
 .input-group
 >
 .input-group-prepend
+
+
 :first-child
 >
 .btn
+
+
 :not
+
  
+
 (
 :first-child
+
  
+
 ),
 .input-group
 >
 .input-group-prepend
+
+
 :first-child
 >
 .input-group-text
+
+
 :not
+
  
+
 (
 :first-child
 
+
 	
+
 )
 {
 border-top-left-radius
+
+
 :
+
  
+
 0;
 border-bottom-left-radius
+
+
 :
+
  
+
 0;
 }
 .custom-control {
@@ -4433,47 +4796,69 @@ border-bottom-left-radius
 }
 
 .custom-select
+
+
 [
 multiple
 ]
 ,
 .custom-select
+
+
 [
 size
 ]
+
+
 :not
+
  
+
 (
 [
 size
 =
 "1"
 ]
+
  
+
 )
 {
 height
-:
- 
-auto
-;
 
-	
-padding-right
+
 :
+
  
+
+auto
+
+
+;
+padding-right
+
+
+:
+
+ 
+
 0
 .75rem
-;
 
-	
+
+;
 background-image
+
+
 :
+
  
+
 none
+
+
 ;
-
-
 }
 .custom-select:disabled {
 	color: #6c757d;
@@ -4869,26 +5254,40 @@ none
 }
 
 .navbar-toggler
+
+
 :not
+
  
+
 (
 :disabled
+
  
+
 )
 :not
+
  
+
 (
 .disabled
+
  
+
 )
 {
 cursor
+
+
 :
+
  
+
 pointer
+
+
 ;
-
-
 }
 .navbar-toggler-icon {
 	display: inline-block;
@@ -5464,29 +5863,47 @@ pointer
 	.card-group
 	>
 	.card
+	
+	
 	:not
+	
 	 
+	
 	(
 	:first-child
+	
 	 
+	
 	)
 	:not
+	
 	 
+	
 	(
 	:last-child
+	
 	 
+	
 	)
 	:not
+	
 	 
+	
 	(
 	:only-child
 	
+	
 		
+	
 	)
 	{
 	border-radius
+	
+	
 	:
+	
 	 
+	
 	0;
 }
 
@@ -5519,28 +5936,48 @@ pointer
 }
 
 .accordion
+
  
+
 .card
+
+
 :not
+
  
+
 (
 :first-of-type
+
  
+
 )
 :not
+
  
+
 (
 :last-of-type
+
  
+
 )
 {
 border-bottom
+
+
 :
+
  
+
 0;
 border-radius
+
+
 :
+
  
+
 0;
 }
 .accordion .card:not (:first-of-type ) .card-header:first-child {
@@ -5630,26 +6067,40 @@ border-radius
 }
 
 .page-link
+
+
 :not
+
  
+
 (
 :disabled
+
  
+
 )
 :not
+
  
+
 (
 .disabled
+
  
+
 )
 {
 cursor
+
+
 :
+
  
+
 pointer
+
+
 ;
-
-
 }
 .page-item:first-child .page-link {
 	margin-left: 0;
@@ -6308,26 +6759,40 @@ to {
 }
 
 .close
+
+
 :not
+
  
+
 (
 :disabled
+
  
+
 )
 :not
+
  
+
 (
 .disabled
+
  
+
 )
 {
 cursor
+
+
 :
+
  
+
 pointer
+
+
 ;
-
-
 }
 button.close {
 	padding: 0;
@@ -6486,36 +6951,52 @@ button.close {
 .modal-footer
 >
 :not
+
  
+
 (
 :first-child
+
  
+
 )
 {
 margin-left
+
+
 :
+
  
+
 .25rem
+
+
 ;
-
-
 }
 .modal-footer
 >
 :not
+
  
+
 (
 :last-child
+
  
+
 )
 {
 margin-right
+
+
 :
+
  
+
 .25rem
+
+
 ;
-
-
 }
 .modal-scrollbar-measure {
 	position: absolute;
@@ -9859,20 +10340,30 @@ a.text-dark:hover, a.text-dark:focus {
 		box-shadow: none !important;
 	}
 	a
+	
+	
 	:not
+	
 	 
+	
 	(
 	.btn
+	
 	 
+	
 	)
 	{
 	text-decoration
+	
+	
 	:
+	
 	 
+	
 	underline
+	
+	
 	;
-	
-	
 }
 
 abbr[title]::after {
@@ -10361,7 +10852,7 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
 
 .hero-wrap .text .subheading {
 	font-size: 24px;
-	color: #bfbfbf;
+	color: #575757;
 	font-weight: 300;
 }
 
@@ -11154,9 +11645,13 @@ textarea.form-control {
 -webkit-box-shadow
 
 
+
+
 :
 
+
  
+
 
 0
 0
@@ -11164,9 +11659,13 @@ textarea.form-control {
 30
 px
 
+
  
 
+
 rgba
+
+
 
 
 (240
@@ -11180,15 +11679,21 @@ rgba
 -webkit-box-shadow
 
 
+
+
 :
 
+
  
+
 
 0
 0
 0
 0
 rgba
+
+
 
 
 (240
@@ -11210,9 +11715,13 @@ keyframes pulse { 0% {
 -moz-box-shadow
 
 
+
+
 :
 
+
  
+
 
 0
 0
@@ -11220,9 +11729,13 @@ keyframes pulse { 0% {
 30
 px
 
+
  
 
+
 rgba
+
+
 
 
 (240
@@ -11233,9 +11746,13 @@ rgba
 -webkit-box-shadow
 
 
+
+
 :
 
+
  
+
 
 0
 0
@@ -11243,9 +11760,13 @@ rgba
 30
 px
 
+
  
 
+
 rgba
+
+
 
 
 (240
@@ -11256,9 +11777,13 @@ rgba
 box-shadow
 
 
+
+
 :
 
+
  
+
 
 0
 0
@@ -11266,9 +11791,13 @@ box-shadow
 30
 px
 
+
  
 
+
 rgba
+
+
 
 
 (240
@@ -11282,15 +11811,21 @@ rgba
 -moz-box-shadow
 
 
+
+
 :
 
+
  
+
 
 0
 0
 0
 0
 rgba
+
+
 
 
 (240
@@ -11301,15 +11836,21 @@ rgba
 -webkit-box-shadow
 
 
+
+
 :
 
+
  
+
 
 0
 0
 0
 0
 rgba
+
+
 
 
 (240
@@ -11320,15 +11861,21 @@ rgba
 box-shadow
 
 
+
+
 :
 
+
  
+
 
 0
 0
 0
 0
 rgba
+
+
 
 
 (240
@@ -11856,21 +12403,31 @@ keyframes loader-rotate { 100% {
 stroke-dasharray
 
 
+
+
 :
 
+
  
+
 
 89,
 200;
 stroke-dashoffset
 
 
+
+
 :
+
 
  
 
+
 -35
 px
+
+
 
 
 ;
@@ -11880,21 +12437,31 @@ px
 stroke-dasharray
 
 
+
+
 :
 
+
  
+
 
 89,
 200;
 stroke-dashoffset
 
 
+
+
 :
+
 
  
 
+
 -136
 px
+
+
 
 
 ;
@@ -11911,21 +12478,31 @@ keyframes loader-dash { 0% {
 stroke-dasharray
 
 
+
+
 :
 
+
  
+
 
 89,
 200;
 stroke-dashoffset
 
 
+
+
 :
+
 
  
 
+
 -35
 px
+
+
 
 
 ;
@@ -11935,21 +12512,31 @@ px
 stroke-dasharray
 
 
+
+
 :
 
+
  
+
 
 89,
 200;
 stroke-dashoffset
 
 
+
+
 :
+
 
  
 
+
 -136
 px
+
+
 
 
 ;
@@ -11960,8 +12547,7 @@ px
 	max-height: 30px;
 }
 
-.edit-button {
-	
+.admin-button {
 	background-color: #000000;
 	border: none;
 	color: white;
@@ -11974,7 +12560,7 @@ px
 	background-color: #000000;
 }
 
-.edit-button:hover {
+.admin-button:hover {
 	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0
 		rgba(0, 0, 0, 0.19);
 }
@@ -11984,7 +12570,7 @@ px
 	max-height: 100%;
 }
 
-.responsive2{
+.responsive2 {
 	max-width: 400px;
 	max-height: 650px;
 }
@@ -12026,9 +12612,15 @@ px
 	font-size: 14px;
 	color: grey;
 }
-.box_2{
-	float: right;	
+
+.box_2 {
+	float: right;
 }
+
+.box_3 {
+	float: left;
+}
+
 .col_1 {
 	color: #000000;
 }
@@ -12036,3 +12628,4 @@ px
 .align {
 	float: right;
 }
+

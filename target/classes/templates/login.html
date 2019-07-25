@@ -32,6 +32,7 @@ s/magnific-popup.css">
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/icomoon.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="/css/index.css">
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
@@ -82,18 +83,39 @@ s/magnific-popup.css">
 		<aside id="colorlib-aside" role="complementary"
 			class="js-fullheight text-center">
 			<h1 id="colorlib-logo">
-				<a href="index.html" style="font-size: 40px">bloqum<span>.</span>tk
+				<a href="index.html" style="font-size: 40px">Kiber Bloq<span></span>
 				</a>
 			</h1>
 			<nav id="colorlib-main-menu" role="navigation">
-				<ul>
+			<ul>
+
 					<li><a href="/">Home</a></li>
-					<li><a href="photography">Photography</a></li>
-					<li><a href="travel">Travel</a></li>
-					<li><a href="fashion">Fashion</a></li>
-					<li><a href="about">About</a></li>
-					<li><a href="contact">Contact</a></li>
-					<li class="colorlib-active"><a href="contact">Login</a></li>
+
+
+					<div sec:authorize="hasRole('ROLE_ADMIN')">
+						<li><a href="/admin">Admin Panel</a></li>
+					</div>
+
+					<li><a href="p/projects">My Projects</a></li>
+					<li><a href="p/about">About</a></li>
+					<li><a href="p/contact">Contact</a></li>
+
+
+					<div sec:authorize="!isAuthenticated()">
+						<li class="colorlib-active"><a href="login">Log in</a></li>
+					</div>
+
+					<div sec:authorize="isAuthenticated()">
+						<li>
+							<form th:action="@{/logout}" method="POST">
+								<input type="submit" class="submitLink" value="Logout">
+								<input type="hidden" name="${_csrf.parameterName}"
+									value="_csrf.token">
+							</form>
+
+						</li>
+
+					</div>
 				</ul>
 			</nav>
 

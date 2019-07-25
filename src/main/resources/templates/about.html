@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Explorer - Free Bootstrap 4 Template by Colorlib</title>
+<title>About me</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -31,6 +31,7 @@
 <link rel="stylesheet" href="/css/flaticon.css">
 <link rel="stylesheet" href="/css/icomoon.css">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/index.css">
 
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
@@ -44,35 +45,35 @@
 		<aside id="colorlib-aside" role="complementary"
 			class="js-fullheight text-center">
 			<h1 id="colorlib-logo">
-				<a href="index.html">elen<span>.</span></a>
+				<a href="/">Kiber Bloq<span></span></a>
 			</h1>
 			<nav id="colorlib-main-menu" role="navigation">
-				<ul>
-
-
-
-					<li><span th:if="${user?.firstName != null}">
-							<div class="col_1" th:text="${'Welcome '+user?.firstName}"></div>
-					</span></li>
+			<ul>
 					<li><a href="/">Home</a></li>
-					<li><a href="cs">Computer Sciences</a></li>
-					<li class="colorlib-active"><a href="about">About</a></li>
-					<li><a href="contact">Contact</a></li>
+					<div sec:authorize="hasRole('ROLE_ADMIN')">
+						<li><a href="/admin">Admin Panel</a></li>
+					</div>
 
-					<span th:if="${user?.firstName == null}">
-						<li><a href="login">Log in</a></li>
-					</span>
+					<li><a href="/p/projects">My Projects</a></li>
+					<li class="colorlib-active"><a href="/p/about">About</a></li>
+					<li><a href="/p/contact">Contact</a></li>
 
-					<li><span th:if="${user?.firstName != null}">
+
+					<div sec:authorize="!isAuthenticated()">
+						<li><a href="/login">Log in</a></li>
+					</div>
+
+					<div sec:authorize="isAuthenticated()">
+						<li>
 							<form th:action="@{/logout}" method="POST">
 								<input type="submit" class="submitLink" value="Logout">
 								<input type="hidden" name="${_csrf.parameterName}"
 									value="_csrf.token">
 							</form>
-					</span></li>
 
+						</li>
 
-
+					</div>
 				</ul>
 			</nav>
 
@@ -94,7 +95,7 @@
 		<!-- END COLORLIB-ASIDE -->
 		<div id="colorlib-main">
 			<div class="hero-wrap hero-wrap-2 js-fullheight"
-				style="background-image: url(images/bg_4.jpg);"
+				style="background-image: url(https://drive.google.com/uc?id=1fVQpII2kMWoQ5DfUAmSjjsMFf9lFmNxL);"
 				data-stellar-background-ratio="0.5">
 				<div class="overlay"></div>
 				<div
@@ -124,7 +125,7 @@
 
 
 								<li class="ftco-animate"><a
-									href="http://www.instagram.com/namiq_bay/"><span
+									href="https://www.imdb.com/user/ur71212622/"><span
 										class="icon-imdb" title="Imdb"></span></a></li>
 
 

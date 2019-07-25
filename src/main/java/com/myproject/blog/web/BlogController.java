@@ -1,5 +1,6 @@
 package com.myproject.blog.web;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,10 +9,14 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.myproject.blog.model.Email;
 import com.myproject.blog.model.User;
 import com.myproject.blog.service.BlogService;
 
@@ -46,17 +51,38 @@ public class BlogController {
 		mav.setViewName("index");
 		return mav;
 	}
+		
+	@RequestMapping("/p/about")
+	public ModelAndView about() {
+		ModelAndView mov = new ModelAndView();
+		mov.setViewName("about");
+		return mov;
+	}
 	
-	@RequestMapping("/users") // sayt.com/users tipli request gəldikdə Spring bu requestin getUsers methodu
-								// tərəfindən handle edilməsini təmin edir
-	public ModelAndView getUsers() {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("users", blogService.findUsers()); // mav içinə findUsers() methodundan qayıdan user listini
-															// 'users' keywordu ilə set edirik
-		mav.setViewName("users");
-		return mav;
+	@GetMapping("/p/contact")
+	public String contactPage(Model model) {
+		model.addAttribute("email", new Email());
+		return "contact";
 	}
 
+	@RequestMapping("/login")
+	public ModelAndView loginPage() {
+		
+		ModelAndView mov = new ModelAndView();
+		mov.setViewName("login");
+		return mov;
+}
+	@RequestMapping(value = "admin", method = RequestMethod.GET)
+	public String adminPage(Model model, Principal principal) {
+		User user = blogService.findUserByUname(principal.getName());		
+		model.addAttribute("user", user);		
+		
+		return "adminPanel";
+	}
+	
+// delete
+	
+	
 	@RequestMapping("/articles")
 	public ModelAndView getArticles() {
 		ModelAndView mav = new ModelAndView();
@@ -70,67 +96,6 @@ public class BlogController {
 		mav.setViewName("articles");
 		return mav;
 
-	}
-	
-	@RequestMapping("/about")
-	public ModelAndView about() {
-		ModelAndView mov = new ModelAndView();
-		mov.setViewName("about");
-		return mov;
-	}
-
-	@RequestMapping("/login")
-	public ModelAndView loginPage() {
-		
-		ModelAndView mov = new ModelAndView();
-		mov.setViewName("login");
-		return mov;
-}
-	
-	
-
-// delete
-	@RequestMapping("/photography")
-	public ModelAndView photography() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("photography");
-		return mav;
-	}
-
-	@RequestMapping("/travel")
-	public ModelAndView travel() {
-		ModelAndView mov = new ModelAndView();
-		mov.setViewName("travel");
-		return mov;
-	}
-
-	@RequestMapping("/fashion")
-	public ModelAndView fashion() {
-		ModelAndView mov = new ModelAndView();
-		mov.setViewName("fashion");
-		return mov;
-	}
-
-	@RequestMapping("/books")
-	public ModelAndView books() {
-		ModelAndView mov = new ModelAndView();
-		mov.setViewName("books");
-		return mov;
-	}
-
-	@RequestMapping("/running")
-	public ModelAndView running() {
-		ModelAndView mov = new ModelAndView();
-		mov.setViewName("running");
-		return mov;
-	}
-
-	@RequestMapping("/article")
-	public ModelAndView rsa() {
-		ModelAndView mov = new ModelAndView();
-		mov.addObject("comments", blogService.findComments());
-		mov.setViewName("cs/tree");
-		return mov;
 	}
 
 	@RequestMapping("/test") // RequestMapping gələn web requestlərini uyğun handler methoda yönəldir

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-<title>bloqum</title>
+<title>Admin Panel</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,7 +30,7 @@
 
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/icomoon.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="/css/style.css">
 
 <link rel="stylesheet" href="css/index.css">
 
@@ -44,7 +44,7 @@
 		<aside id="colorlib-aside" role="complementary"
 			class="js-fullheight text-center">
 			<h1 id="colorlib-logo">
-				<a href="/">bloqum<span>.</span>tk
+				<a href="/">Kiber Bloq<span></span>
 				</a>
 			</h1>
 
@@ -58,19 +58,21 @@
 						</li>
 					</div>
 
-					<li class="colorlib-active"><a href="/">Home</a></li>
+					<li><a href="/">Home</a></li>
 
 
-					
+					<div sec:authorize="hasRole('ROLE_ADMIN')">
+						<li class="colorlib-active"><a href="/admin">Admin Panel</a></li>
+					</div>
 
-					<li><a href="cs">Computer Sciences</a></li>
-					<li><a href="projects">My Project</a></li>
-					<li><a href="about">About</a></li>
-					<li><a href="contact">Contact</a></li>
+
+					<li><a href="/p/projects">My Project</a></li>
+					<li><a href="/p/about">About</a></li>
+					<li><a href="/p/contact">Contact</a></li>
 
 
 					<div sec:authorize="!isAuthenticated()">
-						<li><a href="login">Log in</a></li>
+						<li><a href="/login">Log in</a></li>
 					</div>
 
 					<div sec:authorize="isAuthenticated()">
@@ -106,9 +108,9 @@
 
 		<!-- END COLORLIB-ASIDE -->
 		<div id="colorlib-main">
-			
-			
-			
+
+
+
 			<section class="ftco-section">
 				<div class="container">
 					<div class="row justify-content-center mb-5 pb-2">
@@ -120,14 +122,27 @@
 					<div class="row">
 
 						<figure>
-							
+
 							<a href="/editor"><img alt="" src="/images/icons/97841.svg">
-						</a>
-								<figcaption style="color:black;   text-align: center;">New Post</figcaption>
+							</a>
+							<figcaption style="color: black; text-align: center;">New
+								Post</figcaption>
 						</figure>
 
+						<figure>
 
-						
+							<a href="/admin/users"><img alt="" src="/images/icons/avatar.png">
+							</a>
+							<figcaption style="color: black; text-align: center;">Users</figcaption>
+						</figure>
+
+						<figure>
+
+							<a href="/"><img alt="" src="/images/icons/blogging.png">
+							</a>
+							<figcaption style="color: black; text-align: center;">Comments</figcaption>
+						</figure>
+
 
 					</div>
 				</div>

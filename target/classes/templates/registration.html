@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Login Page</title>
+<title>Registration Page</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -83,19 +83,39 @@
 		<aside id="colorlib-aside" role="complementary"
 			class="js-fullheight text-center">
 			<h1 id="colorlib-logo">
-				<a href="index.html" style="font-size: 40px">bloqum<span>.</span>tk
+				<a href="index.html" style="font-size: 40px">Kiber Bloq<span></span>
 				</a>
 			</h1>
 			<nav id="colorlib-main-menu" role="navigation">
-				<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="photography">Photography</a></li>
-					<li><a href="travel">Travel</a></li>
-					<li><a href="fashion">Fashion</a></li>
-					<li><a href="about">About</a></li>
-					<li><a href="contact">Contact</a></li>
-					<li class="colorlib-active"><a href="contact">Login</a></li>
+					<ul>
 
+					<li><a href="/">Home</a></li>
+
+
+					<div sec:authorize="hasRole('ROLE_ADMIN')">
+						<li><a href="/admin">Admin Panel</a></li>
+					</div>
+
+					<li><a href="/p/projects">My Projects</a></li>
+					<li><a href="/p/about">About</a></li>
+					<li><a href="/p/contact">Contact</a></li>
+
+
+					<div sec:authorize="!isAuthenticated()">
+						<li><a href="/login">Log in</a></li>
+					</div>
+
+					<div sec:authorize="isAuthenticated()">
+						<li>
+							<form th:action="@{/logout}" method="POST">
+								<input type="submit" class="submitLink" value="Logout">
+								<input type="hidden" name="${_csrf.parameterName}"
+									value="_csrf.token">
+							</form>
+
+						</li>
+
+					</div>
 				</ul>
 			</nav>
 
@@ -126,7 +146,7 @@
 				style="background-image: url('login/images/bg-01.jpg');">
 				<div class="inner">
 
-					<form action="#" th:action="@{/createUser}" th:object="${user}"
+					<form action="#" th:action="@{/p/registration}" th:object="${user}"
 						method="post">
 						<h3>Registration Form</h3>
 						<span class="col_3" th:text="${error}" />
