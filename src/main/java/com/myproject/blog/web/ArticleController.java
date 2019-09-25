@@ -172,44 +172,4 @@ public class ArticleController implements ServletContextAware {
 		this.servletContext = servletContext;
 	}
 
-	@RequestMapping(value = "/p/amada", method = RequestMethod.GET)
-	public ModelAndView amadaGPScoordination() {
-		// List<Comment> comment = blogService.findComments();
-
-		ModelAndView mav = new ModelAndView();
-
-		List<Comment> list = blogService.findComments();
-
-		Comment com = list.get(list.size() - 1);
-		
-		String data[] = com.getCoordinate().split(" ");
-		
-		mav.addObject("tem", data[2]);
-		mav.addObject("lat", data[1]);
-		mav.addObject("lng", data[0]);
-		
-		
-		mav.setViewName("amada");
-
-		return mav;
-
-	}
-
-	public void test() {
-		list = blogService.findComments();
-		
-		com = list.get(4);
-		
-		System.out.println(com.getCoordinate());
-		
-		
-		
-
-	}
-
-	public static void main(String[] args) {
-		ArticleController obj = new ArticleController();
-		obj.test();
-	}
-
 }
