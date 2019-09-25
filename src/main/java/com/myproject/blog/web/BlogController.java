@@ -72,7 +72,7 @@ public class BlogController {
 		mov.setViewName("login");
 		return mov;
 }
-	@RequestMapping(value = "admin", method = RequestMethod.GET)
+	@RequestMapping(value = "/h/admin", method = RequestMethod.GET)
 	public String adminPage(Model model, Principal principal) {
 		User user = blogService.findUserByUname(principal.getName());		
 		model.addAttribute("user", user);		

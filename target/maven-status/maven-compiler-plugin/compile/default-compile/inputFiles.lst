@@ -13,8 +13,11 @@ C:\Users\Namiq\git\blog\src\main\java\com\myproject\blog\dao\jpa\AuthorityReposi
 C:\Users\Namiq\git\blog\src\main\java\com\myproject\blog\dao\AuthorityRepository.java
 C:\Users\Namiq\git\blog\src\main\java\com\myproject\blog\dao\jpa\ArticleRepositoryJpaImpl.java
 C:\Users\Namiq\git\blog\src\main\java\com\myproject\blog\exception\InternalServerException.java
+C:\Users\Namiq\git\blog\src\main\java\com\myproject\blog\RestSecurityConfiguration.java
+C:\Users\Namiq\git\blog\src\main\java\com\myproject\blog\web\AmadaRestAPI.java
 C:\Users\Namiq\git\blog\src\main\java\com\myproject\blog\exception\UserNotFoundException.java
 C:\Users\Namiq\git\blog\src\main\java\com\myproject\blog\dao\UserRepository.java
+C:\Users\Namiq\git\blog\src\main\java\com\myproject\blog\AbstractSecurityConfiguration.java
 C:\Users\Namiq\git\blog\src\main\java\com\myproject\blog\exception\SpringException.java
 C:\Users\Namiq\git\blog\src\main\java\com\myproject\blog\web\UserController.java
 C:\Users\Namiq\git\blog\src\main\java\com\myproject\blog\dao\jpa\CommentRepositoryJpaImpl.java
@@ -24,5 +27,4 @@ C:\Users\Namiq\git\blog\src\main\java\com\myproject\blog\dao\jpa\UserRepositoryJ
 C:\Users\Namiq\git\blog\src\main\java\com\myproject\blog\model\Article.java
 C:\Users\Namiq\git\blog\src\main\java\com\myproject\blog\security\BlogAuditorAware.java
 C:\Users\Namiq\git\blog\src\main\java\com\myproject\blog\SecurityConfiguration.java
-C:\Users\Namiq\git\blog\src\main\java\com\myproject\blog\web\BlogRestController.java
 C:\Users\Namiq\git\blog\src\main\java\com\myproject\blog\model\Email.java

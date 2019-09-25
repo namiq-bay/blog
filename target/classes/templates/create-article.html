@@ -13,24 +13,24 @@
 	href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700"
 	rel="stylesheet">
 
-<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="/css/animate.css">
 
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
+<link rel="stylesheet" href="/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="/css/magnific-popup.css">
 
-<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="/css/aos.css">
 
-<link rel="stylesheet" href="css/ionicons.min.css">
+<link rel="stylesheet" href="/css/ionicons.min.css">
 
-<link rel="stylesheet" href="css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="css/jquery.timepicker.css">
+<link rel="stylesheet" href="/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="/css/jquery.timepicker.css">
 
 
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/icomoon.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="/css/flaticon.css">
+<link rel="stylesheet" href="/css/icomoon.css">
+<link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/index.css">
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -70,10 +70,10 @@
 
 <!-- MATERIAL DESIGN ICONIC FONT -->
 <link rel="stylesheet"
-	href="reg/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+	href="/reg/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 
 <!-- STYLE CSS -->
-<link rel="stylesheet" href="css/ckeditor.css">
+<link rel="stylesheet" href="/css/ckeditor.css">
 
 <!-- 
 <script src="/ckeditor/ckeditor.js"></script>
@@ -125,7 +125,7 @@
 
 
 					<div sec:authorize="hasRole('ROLE_ADMIN')">
-						<li><a href="/admin">Admin Panel</a></li>
+						<li><a href="/h/admin">Admin Panel</a></li>
 					</div>
 
 					<li><a href="p/projects">My Projects</a></li>
@@ -179,7 +179,7 @@
 				style="background-image: url('login/images/bg-01.jpg');">
 				<div class="inner">
 
-					<form action="#" th:action="@{/createArticle}"
+					<form action="#" th:action="@{/h/articles/create}"
 						th:object="${article}" method="post" enctype="multipart/form-data">
 
 						<h3>New Aricle</h3>
@@ -246,24 +246,24 @@
 
 
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.stellar.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/jquery.animateNumber.min.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/jquery.timepicker.min.js"></script>
-	<script src="js/scrollax.min.js"></script>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.easing.1.3.js"></script>
+	<script src="/js/jquery.waypoints.min.js"></script>
+	<script src="/js/jquery.stellar.min.js"></script>
+	<script src="/js/owl.carousel.min.js"></script>
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+	<script src="/js/aos.js"></script>
+	<script src="/js/jquery.animateNumber.min.js"></script>
+	<script src="/js/bootstrap-datepicker.js"></script>
+	<script src="/js/jquery.timepicker.min.js"></script>
+	<script src="/js/scrollax.min.js"></script>
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="js/google-map.js"></script>
-	<script src="js/main.js"></script>
+	<script src="/js/google-map.js"></script>
+	<script src="/js/main.js"></script>
 
 </body>
 </html>

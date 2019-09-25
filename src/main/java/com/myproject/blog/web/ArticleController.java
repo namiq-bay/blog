@@ -57,7 +57,11 @@ public class ArticleController implements ServletContextAware {
 	@Autowired
 	private BlogService blogService;
 
-	@RequestMapping(value = "/editor", method = RequestMethod.GET)
+	// delete
+	List<Comment> list;
+	static Comment com ;
+
+	@RequestMapping(value = "/h/editor", method = RequestMethod.GET)
 	public String editor(Model model) {
 		model.addAttribute("article", new Article());
 		return "create-article";
@@ -110,7 +114,7 @@ public class ArticleController implements ServletContextAware {
 		return mov;
 	}
 
-	@RequestMapping(value = "/createArticle", method = RequestMethod.POST)
+	@RequestMapping(value = "/h/articles/create", method = RequestMethod.POST)
 	public String createArticle(@ModelAttribute Article article, RedirectAttributes redirectAttributes,
 			Principal principal, BindingResult bindingResult) {
 
@@ -130,14 +134,14 @@ public class ArticleController implements ServletContextAware {
 
 	// Update article
 
-	@RequestMapping(value = "/articles/update/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/h/articles/update/{id}", method = RequestMethod.GET)
 	public String loadArticleByID(@PathVariable Long id, ModelMap model) {
 		Article article = blogService.findArticleById(id);
 		model.put("article", article);
 		return "edit-article";
 	}
 
-	@RequestMapping(value = "/articles/update/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "/h/articles/update/{id}", method = RequestMethod.POST)
 	public String editArticle(@ModelAttribute Article article, RedirectAttributes redirectAttributes,
 			Principal principal) {
 
@@ -149,13 +153,13 @@ public class ArticleController implements ServletContextAware {
 		return "redirect:/articles/" + article.getUrl();
 	}
 
-	@RequestMapping(value = "/articles/delete/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "/h/articles/delete/{id}", method = RequestMethod.POST)
 	public String deleteArticle(@PathVariable Long id) {
 
 		Article article = blogService.findArticleById(id);
 
 		// delete article's comments
-		blogService.deleteCommentsByArticle(article);
+//		blogService.deleteCommentsByArticle(article);
 
 		// delete article
 		blogService.deleteArticle(id);
@@ -167,4 +171,45 @@ public class ArticleController implements ServletContextAware {
 	public void setServletContext(ServletContext servletContext) {
 		this.servletContext = servletContext;
 	}
+
+	@RequestMapping(value = "/p/amada", method = RequestMethod.GET)
+	public ModelAndView amadaGPScoordination() {
+		// List<Comment> comment = blogService.findComments();
+
+		ModelAndView mav = new ModelAndView();
+
+		List<Comment> list = blogService.findComments();
+
+		Comment com = list.get(list.size() - 1);
+		
+		String data[] = com.getCoordinate().split(" ");
+		
+		mav.addObject("tem", data[2]);
+		mav.addObject("lat", data[1]);
+		mav.addObject("lng", data[0]);
+		
+		
+		mav.setViewName("amada");
+
+		return mav;
+
+	}
+
+	public void test() {
+		list = blogService.findComments();
+		
+		com = list.get(4);
+		
+		System.out.println(com.getCoordinate());
+		
+		
+		
+
+	}
+
+	public static void main(String[] args) {
+		ArticleController obj = new ArticleController();
+		obj.test();
+	}
+
 }

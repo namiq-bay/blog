@@ -23,7 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Entity
-@Table(name="comments")
+@Table(name = "comments")
 @XmlRootElement
 public class Comment {
 
@@ -31,33 +31,32 @@ public class Comment {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "blogSeqGen")
 	@SequenceGenerator(name = "blogSeqGen", sequenceName = "blog_sequence")
 	private Long id;
-	
+
 	@Column(name = "accept")
 	private byte accept;
 
-	
-	//@Size(min=3, max=30)
-	//@NotEmpty
+	// @Size(min=3, max=30)
+	// @NotEmpty
 	@Column(name = "name")
 	private String name;
 
-	//@NotEmpty
+	// @NotEmpty
 	@Column(name = "email")
 	private String email;
 
 	@Column(name = "web_site")
 	private String webSite;
 
-	//@NotEmpty
+	// @NotEmpty
 	@Column(name = "comment")
 	private String comment;
-	
-	@DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME)
+
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 	@Column(name = "comment_date")
 	private Date commentDate;
-	
-	
-	// (cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH})
+
+	// (cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE,
+	// CascadeType.REFRESH, CascadeType.DETACH})
 
 	@ManyToOne
 	@JoinColumn(name = "article_id")
@@ -126,14 +125,11 @@ public class Comment {
 	public void setCommentDate(Date commentDate) {
 		this.commentDate = commentDate;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Comment [id=" + id + ", accept=" + accept + ", name=" + name + ", email=" + email + ", webSite="
 				+ webSite + ", comment=" + comment + ", article=" + article + "]";
 	}
-	
-	
-	
-		
+
 }

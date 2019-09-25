@@ -14,10 +14,10 @@
 
 	<!-- Header -->
 	<div class="topnav">
-		<a class="active" href="/">Home</a> <a href="/admin">Admin Panel</a> <a
-			href="/admin/users">Users</a>
+		<a class="active" href="/">Home</a> <a href="/h/admin">Admin Panel</a> <a
+			href="/h/admin/users">Users</a>
 		<div class="search-container">
-			<form action="#" th:action="@{/users/search}"
+			<form action="#" th:action="@{/h/users/search}"
 				th:object="${searchTerm}" method="POST">
 				<input type="text" id="searchTerm" name="searchTerm"
 					placeholder="Search User">
@@ -50,7 +50,7 @@
 		<tbody>
 			<th:block th:each="user,iterStat:${users}">
 				<tr>
-					<form th:action="@{/update/user/}+${user.id}" method="POST"
+					<form th:action="@{/h/update/user/}+${user.id}" method="POST"
 						th:object="${user}">
 						<td><input type="text" placeholder="ID" th:value="*{id}"
 							id="id" name="id" required="required" size="4" /></td>
@@ -84,7 +84,7 @@
 					</form>
 
 					<td>
-						<form th:action="@{/delete/user/}+${user.id}" method="post">
+						<form th:action="@{/h/delete/user/}+${user.id}" method="post">
 							<input type="submit" name="delete" value="Delete User" />
 						</form>
 					</td>

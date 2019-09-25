@@ -47,7 +47,7 @@ public class User extends BaseEntity {
 	@Column(name = "email", nullable = false)
 	private String email;
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Set<Article> articles = new HashSet<>();
 
 	public String getUsername() {

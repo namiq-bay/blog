@@ -39,37 +39,37 @@
 <link rel="icon" type="image/png" href="login/images/icons/favicon.ico" />
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="login/vendor/bootstrap/css/bootstrap.min.css">
+	href="/login/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	href="/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	href="/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="login/vendor/animate/animate.css">
+	href="/login/vendor/animate/animate.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="login/vendor/css-hamburgers/hamburgers.min.css">
+	href="/login/vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="login/vendor/animsition/css/animsition.min.css">
+	href="/login/vendor/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="login/vendor/select2/select2.min.css">
+	href="/login/vendor/select2/select2.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="login/vendor/daterangepicker/daterangepicker.css">
+	href="/login/vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="login/css/util.css">
-<link rel="stylesheet" type="text/css" href="login/css/main.css">
+<link rel="stylesheet" type="text/css" href="/login/css/util.css">
+<link rel="stylesheet" type="text/css" href="/login/css/main.css">
 <!--===============================================================================================-->
 
 
 <!-- MATERIAL DESIGN ICONIC FONT -->
 <link rel="stylesheet"
-	href="reg/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+	href="/reg/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 
 <!-- STYLE CSS -->
 <link rel="stylesheet" href="/css/ckeditor.css">
@@ -125,7 +125,7 @@
 
 
 					<div sec:authorize="hasRole('ROLE_ADMIN')">
-						<li><a href="/admin">Admin Panel</a></li>
+						<li><a href="/h/admin">Admin Panel</a></li>
 					</div>
 
 					<li><a href="p/projects">My Projects</a></li>
@@ -180,7 +180,7 @@
 				<div class="inner">
 
 
-					<form action="#" th:action="@{/articles/update/}+${id}"
+					<form action="#" th:action="@{/h/articles/update/}+${id}"
 						th:object="${article}" method="POST" enctype="multipart/form-data">
 
 						<h3>Edit Article</h3>

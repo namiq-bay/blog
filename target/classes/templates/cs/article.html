@@ -6,10 +6,7 @@
 <title th:text="${article.title}" ></title> 
 <meta name="description" th:attr="content=${article.about}" >
 
-<meta name="og:image" property="og:image" th:attr="content=${article.imageUrl}" />
 <meta name="og:image" property="og:image" th:attr="content=${article.imageUrl}" >
-<meta name="og:image" property="og:image" th:attr="content=${'https://drive.google.com/uc?id=1jVjDJU9kgkOv_85u3AdVcmTTVXaTIxdM'}" >
-
 
 
 <meta charset="utf-8">
@@ -200,7 +197,7 @@ MathJax.Hub.Config({
 									</button>
 
 									<form id="myForm" action="#"
-										th:action="@{'/articles/delete/' + ${article.id}}"
+										th:action="@{'/h/articles/delete/' + ${article.id}}"
 										method="post" enctype="multipart/form-data">
 									</form>
 										
@@ -220,7 +217,7 @@ MathJax.Hub.Config({
 								</span> 								
 
 								<span class="box_2"> <a
-									th:href="@{'/articles/update/' + ${article.id}}">
+									th:href="@{'/h/articles/update/' + ${article.id}}">
 										<button class="admin-button">
 											Edit <i class="fa fa-edit"></i>
 										</button>

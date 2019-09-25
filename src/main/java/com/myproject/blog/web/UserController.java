@@ -78,7 +78,7 @@ public class UserController {
 
 	// User Editing
 
-	@RequestMapping(method = RequestMethod.GET, value = "/admin/users")
+	@RequestMapping(method = RequestMethod.GET, value = "/h/admin/users")
 	public ModelAndView getUsers() {
 		ModelAndView mav = new ModelAndView();
 		List<User> users = blogService.findUsers();
@@ -90,7 +90,7 @@ public class UserController {
 
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/update/user/{id}")
+	@RequestMapping(method = RequestMethod.POST, value = "/h/update/user/{id}")
 	public String updateUser(@PathVariable("id") Long id, @Valid User user, BindingResult result,
 			RedirectAttributes redirectAttributes) {
 		try {
@@ -103,25 +103,25 @@ public class UserController {
 
 			blogService.updateUser(user);
 			redirectAttributes.addFlashAttribute("message", "User successfuly updated!");
-			return "redirect:/admin/users";
+			return "redirect:/h/admin/users";
 
 		} catch (Exception e) {
 			String message = null;
 			redirectAttributes.addFlashAttribute("message", "User not updated!");
-			return "redirect:/admin/users";
+			return "redirect:/h/admin/users";
 		}
 
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/delete/user/{id}")
+	@RequestMapping(method = RequestMethod.POST, value = "/h/delete/user/{id}")
 	public String deleteUser(@PathVariable("id") Long id, RedirectAttributes attributes) {
 		blogService.deleteUser(id);
 		attributes.addFlashAttribute("message", "User succesfuly deleted!");
-		return "redirect:/admin/users";
+		return "redirect:/h/admin/users";
 
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/users/search")
+	@RequestMapping(method = RequestMethod.POST, value = "/h/users/search")
 	public ModelAndView userSearch(@RequestParam("searchTerm") String searchTerm) {
 		ModelAndView mov = new ModelAndView();
 		List<User> users = new ArrayList<User>();
